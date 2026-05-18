@@ -1304,3 +1304,53 @@ body.auth-locked {
 .big-text span{
     font-size: 1.2rem;
 }
+
+/* BOTÓN SETTINGS */
+
+.settings-btn{
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PANEL SETTINGS */
+
+.personalization-panel{
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    width: 350px;
+
+    z-index: 9999;
+
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+/* FONDO OSCURO */
+
+.personalization-panel::before{
+    content:"";
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.5);
+
+    z-index: -1;
+}
