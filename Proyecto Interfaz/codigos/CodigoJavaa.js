@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*madre de java*/
 (function() {
   const SESSION_KEY = 'liverpool_auth_session';
@@ -212,3 +213,8 @@
     initAuthGate();
   }
 })();
+=======
+// =========================
+// Cosas para java
+// ========================
+>>>>>>> 84842e428063ec4a650969b71b212aa9d21848a0
