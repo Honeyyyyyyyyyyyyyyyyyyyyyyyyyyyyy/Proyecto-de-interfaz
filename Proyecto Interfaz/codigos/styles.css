@@ -186,8 +186,8 @@ html{
 ========================= */
 
 .primary-nav{
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
 
     width: 280px;              /* 👈 ancho tipo menú lateral */
@@ -203,7 +203,14 @@ html{
 
     transform: translateX(-100%);  /* 👈 oculto */
     transition: 0.3s ease;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+    z-index: 2000;
+
+    padding: 20px 40px;
 }
+
 
 /* cuando está visible */
 .primary-nav:not([hidden]){
