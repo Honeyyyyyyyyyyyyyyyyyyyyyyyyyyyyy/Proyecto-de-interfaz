@@ -409,6 +409,14 @@ section{
     max-width:600px;
 }
 
+.results-count{
+    margin-top:1rem;
+    margin-bottom:2rem;
+    color:#666;
+    font-size:0.95rem;
+    font-weight:500;
+}
+
 /* =========================
    GRID PRODUCTOS
 ========================= */
