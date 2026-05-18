@@ -1217,7 +1217,7 @@ body.auth-locked {
     left: 50%;
     transform: translate(-50%, -50%) scale(0.8);
 
-    background: white;
+    background: #e5008d;
     padding: 25px;
     border-radius: 15px;
 
