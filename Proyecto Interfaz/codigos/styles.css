@@ -996,3 +996,11 @@ a:hover{
 .skip-link:focus{
     top:20px;
 }
+
+/* =========================
+   RELATED PRODUCTS
+========================= */
+
+.related-products__title{
+    margin-bottom:30px;
+}
