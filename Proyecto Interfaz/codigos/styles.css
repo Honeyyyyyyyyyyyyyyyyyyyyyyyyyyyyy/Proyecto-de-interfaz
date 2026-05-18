@@ -417,6 +417,15 @@ section{
     font-weight:500;
 }
 
+.load-more{
+    margin-top:3rem;
+    text-align:center;
+}
+
+.btn--wide{
+    min-width:220px;
+}
+
 /* =========================
    GRID PRODUCTOS
 ========================= */
