@@ -1252,3 +1252,55 @@ body.auth-locked {
     opacity: 1;
     pointer-events: auto;
 }
+
+/* =========================
+   MODO OSCURO
+========================= */
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .product-card,
+.dark-mode .settings-popup{
+    background:#1e1e1e;
+    color:white;
+}
+
+.dark-mode input{
+    background:#2a2a2a;
+    color:white;
+    border:1px solid #555;
+}
+
+
+/* =========================
+   LETRAS GRANDES
+========================= */
+
+.big-text{
+    font-size: 20px;
+}
+
+.big-text h1{
+    font-size: 3rem;
+}
+
+.big-text h2{
+    font-size: 2.5rem;
+}
+
+.big-text h3{
+    font-size: 2rem;
+}
+
+.big-text p,
+.big-text a,
+.big-text button,
+.big-text li,
+.big-text span{
+    font-size: 1.2rem;
+}
