@@ -1479,7 +1479,7 @@ document.querySelector('[data-action="reset-font"]');
 // AUMENTAR
 increaseBtn.addEventListener('click', () => {
 
-    currentSize += 10;
+    currentSize = Math.min(currentSize + 10, 150)
 
     document.body.style.fontSize = currentSize + '%';
 
@@ -1491,7 +1491,7 @@ increaseBtn.addEventListener('click', () => {
 // DISMINUIR
 decreaseBtn.addEventListener('click', () => {
 
-    currentSize -= 10;
+    currentSize = Math.max(currentSize - 10, 100);
 
     document.body.style.fontSize = currentSize + '%';
 
