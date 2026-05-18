@@ -362,6 +362,95 @@ html{
     text-align:center;
 }
 
+/* ==========================================
+   MENÚ HAMBURGUESA Y SIDEBAR LATERAL
+   ========================================== */
+
+/* Contenedor del Menú Lateral */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);
+  z-index: 100000; /* Asegura estar por encima del contenido */
+  transform: translateX(-100%); /* Escondido a la izquierda */
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clase de activación por JS */
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Encabezado del Menú Lateral */
+.sidebar-header {
+  padding: 20px;
+  background-color: #e5008d; /* Rosa Liverpool */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+.close-menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Lista de Categorías */
+.sidebar-links {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+}
+.sidebar-links li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 25px;
+  color: #333333;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.sidebar-links li a i {
+  color: #e5008d;
+  width: 20px;
+  text-align: center;
+}
+.sidebar-links li a:hover {
+  background-color: #fff0f8;
+  color: #e5008d;
+}
+
+/* Overlay oscuro de fondo */
+.menu-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  display: none;
+}
+.menu-overlay.active {
+  display: block;
+}
+
 /* =========================
    SECCIONES
 ========================= */
