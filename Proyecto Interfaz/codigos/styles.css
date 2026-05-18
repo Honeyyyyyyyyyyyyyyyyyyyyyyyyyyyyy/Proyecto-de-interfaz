@@ -193,10 +193,12 @@ html{
 
 .primary-nav__list{
     display:flex;
-    gap:30px;
+    flex-direction:column;
+    gap:10px;
     list-style:none;
-    align-items:center;
-    height:60px;
+    align-items:flex-start;
+    height:auto;
+    padding:20px 0;
 }
 
 .primary-nav__link{
@@ -508,7 +510,7 @@ section{
     transition:.4s;
 }
 
-/* zoom que menciona su PDF */
+
 .product-card:hover .product-card__img{
     transform:scale(1.06);
 }
