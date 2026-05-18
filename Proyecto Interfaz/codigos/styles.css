@@ -1340,17 +1340,3 @@ body.auth-locked {
 
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
-
-/* FONDO OSCURO */
-
-.personalization-panel::before{
-    content:"";
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,0.5);
-
-    z-index: -1;
-}
