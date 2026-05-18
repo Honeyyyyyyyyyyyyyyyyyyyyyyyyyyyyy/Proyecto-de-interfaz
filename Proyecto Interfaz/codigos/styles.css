@@ -517,6 +517,10 @@ section{
     padding:0 18px 18px;
 }
 
+.product-card__thumbnails {
+    display: none;
+}
+
 /* =========================
    PRODUCT DETAIL
 ========================= */

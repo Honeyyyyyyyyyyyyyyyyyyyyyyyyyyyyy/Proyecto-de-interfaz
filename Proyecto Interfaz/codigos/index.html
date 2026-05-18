@@ -920,75 +920,282 @@
       </div>
     </section>
 
-    <!-- ── PRODUCTOS EN TENDENCIA ── -->
+    <!-- ── PRODUCTOS EN TENDENCIA (con Features 3 & 4) ── -->
     <section class="section-trending" aria-labelledby="trending-heading">
       <header class="section-header">
         <h2 id="trending-heading" class="section-title">
-          Productos en tendencia
+          Productos en <em class="highlight">tendencia</em>
         </h2>
       </header>
       <ul class="product-grid product-grid--trending" role="list"
         aria-label="Productos en tendencia">
-
         <li class="product-card" role="listitem">
-          <article aria-label="Apple iPhone 16 Pro Max en tendencia">
-            <a href="#" class="product-card__link">
-              <figure class="product-card__figure">
-                <img src="assets/images/trending/iphone-16-pro-max.jpg"
-                  alt="Apple iPhone 16 Pro Max, color blanco titanio, vista frontal y trasera"
-                  width="200" height="200" loading="lazy" class="product-card__img" />
-              </figure>
-              <div class="product-card__info">
-                <h3 class="product-card__name">Apple iPhone 16 Pro Max</h3>
-                <p class="product-card__price"><strong>$28,499 MXN</strong></p>
-                <div class="product-card__rating" aria-label="5 estrellas de 5">
-                  <span aria-hidden="true">★★★★★</span>
-                </div>
+          <article aria-label="iPhone 16 Pro Max — Apple">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de iPhone 16 Pro Max">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/trending/iphone-16-pro-max.jpg"
+                    alt="Apple iPhone 16 Pro Max, color blanco titanio, vista frontal"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de iPhone 16 Pro Max">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de iPhone 16 Pro Max"
+                  data-action="switch-card-img"
+                  data-img="assets/images/trending/iphone-16-pro-max.jpg">
+                  <img src="assets/images/trending/iphone-16-pro-max.jpg" alt="Vista lateral iPhone 16 Pro Max"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de iPhone 16 Pro Max"
+                  data-action="switch-card-img"
+                  data-img="assets/images/trending/iphone-16-pro-max.jpg">
+                  <img src="assets/images/trending/iphone-16-pro-max.jpg" alt="Vista trasera iPhone 16 Pro Max"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">Apple</span>
+              <h2 class="product-card__name">iPhone 16 Pro Max</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 5 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★★</span>
+                <span class="rating-value">5</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
               </div>
-            </a>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$28,499 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar iPhone 16 Pro Max en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar iPhone 16 Pro Max a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="iphone-16-pro-max"
+                data-product-name="iPhone 16 Pro Max"
+                data-product-price="$28,499 MXN"
+                data-product-img="assets/images/trending/iphone-16-pro-max.jpg">
+                + Agregar
+              </button>
+            </div>
+
           </article>
         </li>
-
         <li class="product-card" role="listitem">
-          <article aria-label="4RGOTECH Cargador Inalámbrico en tendencia">
-            <a href="#" class="product-card__link">
-              <figure class="product-card__figure">
-                <img src="assets/images/trending/4rgotech-cargador.jpg"
-                  alt="Cargador inalámbrico 4RGOTECH, negro, con indicador LED, base plana"
-                  width="200" height="200" loading="lazy" class="product-card__img" />
-              </figure>
-              <div class="product-card__info">
-                <span class="product-card__brand">4RGOTECH</span>
-                <h3 class="product-card__name">Cargador Inalámbrico Qi</h3>
-                <p class="product-card__price"><strong>$799 MXN</strong></p>
-                <div class="product-card__rating" aria-label="4 estrellas de 5">
-                  <span aria-hidden="true">★★★★☆</span>
-                </div>
+          <article aria-label="Cargador Inalámbrico Qi — 4RGOTECH">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Cargador Inalámbrico Qi">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/trending/4rgotech-cargador.jpg"
+                    alt="Cargador inalámbrico 4RGOTECH, negro, con indicador LED"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Cargador Inalámbrico Qi">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Cargador Inalámbrico Qi"
+                  data-action="switch-card-img"
+                  data-img="assets/images/trending/4rgotech-cargador.jpg">
+                  <img src="assets/images/trending/4rgotech-cargador.jpg" alt="Vista superior del cargador"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Cargador Inalámbrico Qi"
+                  data-action="switch-card-img"
+                  data-img="assets/images/trending/4rgotech-cargador.jpg">
+                  <img src="assets/images/trending/4rgotech-cargador.jpg" alt="Cargador en uso con teléfono"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">4RGOTECH</span>
+              <h2 class="product-card__name">Cargador Inalámbrico Qi</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
               </div>
-            </a>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$799 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Cargador Inalámbrico Qi en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Cargador Inalámbrico Qi a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="cargador-4rgotech"
+                data-product-name="Cargador Inalámbrico Qi"
+                data-product-price="$799 MXN"
+                data-product-img="assets/images/trending/4rgotech-cargador.jpg">
+                + Agregar
+              </button>
+            </div>
+
           </article>
         </li>
-
         <li class="product-card" role="listitem">
-          <article aria-label="Audífonos EXL True Wireless en tendencia">
-            <a href="#" class="product-card__link">
-              <figure class="product-card__figure">
-                <img src="assets/images/trending/exl-audifonos.jpg"
-                  alt="Audífonos inalámbricos EXL True Wireless, color negro, cancelación de ruido"
-                  width="200" height="200" loading="lazy" class="product-card__img" />
-              </figure>
-              <div class="product-card__info">
-                <span class="product-card__brand">EXL</span>
-                <h3 class="product-card__name">Audífonos True Wireless</h3>
-                <p class="product-card__price"><strong>$1,699 MXN</strong></p>
-                <div class="product-card__rating" aria-label="4 estrellas de 5">
-                  <span aria-hidden="true">★★★★☆</span>
-                </div>
+          <article aria-label="Audífonos True Wireless — EXL">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Audífonos True Wireless">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/trending/exl-audifonos.jpg"
+                    alt="Audífonos inalámbricos EXL True Wireless, color negro"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Audífonos True Wireless">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Audífonos True Wireless"
+                  data-action="switch-card-img"
+                  data-img="assets/images/trending/exl-audifonos.jpg">
+                  <img src="assets/images/trending/exl-audifonos.jpg" alt="Estuche de carga de los audífonos EXL"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Audífonos True Wireless"
+                  data-action="switch-card-img"
+                  data-img="assets/images/trending/exl-audifonos.jpg">
+                  <img src="assets/images/trending/exl-audifonos.jpg" alt="Audífonos EXL en uso"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">EXL</span>
+              <h2 class="product-card__name">Audífonos True Wireless</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
               </div>
-            </a>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$1,699 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Audífonos True Wireless en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Audífonos True Wireless a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="exl-audifonos"
+                data-product-name="Audífonos True Wireless"
+                data-product-price="$1,699 MXN"
+                data-product-img="assets/images/trending/exl-audifonos.jpg">
+                + Agregar
+              </button>
+            </div>
+
           </article>
         </li>
-
       </ul>
     </section>
 
