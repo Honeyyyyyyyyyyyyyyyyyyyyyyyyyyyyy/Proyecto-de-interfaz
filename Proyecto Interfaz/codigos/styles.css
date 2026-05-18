@@ -1206,3 +1206,49 @@ body.auth-locked {
 .related-products__title{
     margin-bottom:30px;
 }
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings-popup{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+
+    width: 320px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.3s;
+    z-index: 9999;
+}
+
+.settings-popup.active{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.settings-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.3s;
+    z-index: 9998;
+}
+
+.settings-overlay.active{
+    opacity: 1;
+    pointer-events: auto;
+}
