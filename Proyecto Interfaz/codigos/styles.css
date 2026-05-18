@@ -355,6 +355,13 @@ html{
     border-radius:10px;
 }
 
+.btn--wide{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
 /* =========================
    SECCIONES
 ========================= */
