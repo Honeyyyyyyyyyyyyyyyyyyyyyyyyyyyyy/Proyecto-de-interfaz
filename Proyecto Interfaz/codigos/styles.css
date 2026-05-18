@@ -959,6 +959,208 @@ a:hover{
     transform:scale(1.05);
 }
 
+/* Aqui empieza el css del login */
+/* ==========================================================================
+   INTERFAZ DE Login 
+   ========================================================================== */
+
+body.auth-locked {
+  overflow: hidden !important;
+}
+
+.auth-modal {
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: var(--dark);
+  width: calc(100% - 32px);
+  max-width: 480px;
+  margin: auto;
+  padding: 35px 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  z-index: 250;
+}
+
+.auth-modal::backdrop {
+  background: transparent;
+}
+
+.auth-modal__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-modal__logo {
+  height: 38px;
+  width: auto;
+  margin: 0 auto 12px auto;
+  display: block;
+}
+
+.auth-modal__title {
+  font-size: 1.4rem;
+  color: var(--pink);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.auth-modal__subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.auth-progress {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.auth-progress__step {
+  flex: 1;
+  height: 6px;
+  background-color: var(--gray);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.auth-progress__step--active {
+  background-color: var(--pink);
+}
+
+.auth-progress__step--completed {
+  background-color: var(--dark);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: var(--radius);
+  background-color: var(--gray);
+  color: var(--dark);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--pink);
+  background-color: white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(229, 0, 141, 0.1);
+}
+
+.auth-error-alert {
+  background-color: #fff0f6;
+  color: #c8004b;
+  border: 1px solid #ffcbd6;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.auth-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+
+.auth-modal__actions .btn--primary {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  border: none;
+  background-color: var(--pink);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.auth-modal__actions .btn--primary:hover {
+  background-color: var(--pink-hover);
+}
+
+
+.btn--secondary {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1.5px solid var(--pink);
+  color: var(--pink);
+  font-weight: 700;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
+}
+
+.btn--secondary:hover {
+  background-color: rgba(229, 0, 141, 0.04);
+}
+
+
+.auth-modal__footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.auth-modal__footer p {
+  margin-bottom: 6px;
+}
+
+.auth-modal__link {
+  color: var(--pink);
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  padding: 2px 5px;
+}
+
+.auth-modal__link:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 400px) {
+  .auth-modal {
+    padding: 25px 20px;
+  }
+}
+
+/* Aqui termina el css del login */
+
 .offer-promo-card__caption,
 .gifting-card__caption{
     padding:20px;
