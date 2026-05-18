@@ -341,7 +341,7 @@
        ══════════════════════════════════════════════════════════════ -->
   <aside id="personalization-panel" class="personalization-panel"
     aria-label="Panel de personalización"
-    aria-hidden="true" hidden>
+    aria-hidden="false">
     <div class="personalization-panel__inner">
       <h2 class="personalization-panel__title">Personalización</h2>
 
@@ -1409,105 +1409,7 @@
 
 
 
-  <!-- =========================
-     PANEL SETTINGS EMERGENTE
-========================= -->
-
-<div class="settings-overlay" id="settingsOverlay"></div>
-
-<div class="settings-popup" id="settingsPopup">
-
-    <div class="settings-header">
-        <h2>Configuración</h2>
-
-        <button id="closeSettings">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    </div>
-
-    <!-- MODO OSCURO -->
-    <div class="setting-option">
-
-        <span>
-            <i class="fa-solid fa-moon"></i>
-            Modo oscuro
-        </span>
-
-        <label class="switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-        </label>
-
-    </div>
-
-    <!-- LETRAS GRANDES -->
-    <div class="setting-option">
-
-        <span>
-            <i class="fa-solid fa-font"></i>
-            Letras grandes
-        </span>
-
-        <label class="switch">
-            <input type="checkbox" id="fontSizeToggle">
-            <span class="slider"></span>
-        </label>
-
-    </div>
-
-</div>
-
-<!-- =========================
-     SCRIPT SETTINGS
-========================= -->
-
-<script>
-
-const gearButton = document.querySelector('.settings-btn');
-
-const settingsPopup = document.getElementById('settingsPopup');
-const settingsOverlay = document.getElementById('settingsOverlay');
-const closeSettings = document.getElementById('closeSettings');
-
-const darkModeToggle = document.getElementById('darkModeToggle');
-const fontSizeToggle = document.getElementById('fontSizeToggle');
-
-
-// ABRIR SETTINGS
-gearButton.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    settingsPopup.classList.add('active');
-    settingsOverlay.classList.add('active');
-});
-
-
-// CERRAR SETTINGS
-closeSettings.addEventListener('click', cerrarSettings);
-settingsOverlay.addEventListener('click', cerrarSettings);
-
-function cerrarSettings(){
-    settingsPopup.classList.remove('active');
-    settingsOverlay.classList.remove('active');
-}
-
-
-// MODO OSCURO
-darkModeToggle.addEventListener('change', () => {
-
-    document.body.classList.toggle('dark-mode');
-
-});
-
-
-// LETRAS GRANDES
-fontSizeToggle.addEventListener('change', () => {
-
-    document.body.classList.toggle('big-text');
-
-});
-
-</script>
+  
 
 </body>
 </html>
