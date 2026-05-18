@@ -182,13 +182,13 @@ html{
 }
 
 /* =========================
-   NAV
+   NAV (VERSIÓN CORREGIDA)
 ========================= */
 
 .primary-nav{
     background:white;
     border-bottom:1px solid #eee;
-    padding:0 40px;
+    padding:20px;
 }
 
 .primary-nav__list{
@@ -196,26 +196,15 @@ html{
     flex-direction:column;
     gap:12px;
     list-style:none;
-    padding:20px;
-    align-items:stretch;
-}
-
-.primary-nav__link{
-    text-decoration:none;
-    color:#333;
-    font-weight:600;
-    transition:.2s;
-}
-
-.primary-nav__link:hover{
-    color:var(--pink);
+    padding:0;
+    margin:0;
 }
 
 .primary-nav__item{
     width:100%;
 }
 
-/* BOTONES Y LINKS DEL MENÚ */
+/* BOTONES PRINCIPALES */
 .primary-nav__link{
     width:100%;
     display:flex;
@@ -227,31 +216,45 @@ html{
     background:var(--gray);
     border-radius:var(--radius);
 
-    text-decoration:none;
-    color:var(--dark);
+    border:none;
+    cursor:pointer;
+
     font-weight:600;
+    color:var(--dark);
 
     box-shadow:var(--shadow);
 
     transition:0.25s;
 }
 
-/* hover estilo tienda */
 .primary-nav__link:hover{
     background:#fff;
     transform:translateY(-2px);
     color:var(--pink);
 }
 
-/* icono flecha */
+/* estado abierto */
+.primary-nav__link[aria-expanded="true"]{
+    background:#fff;
+    color:var(--pink);
+    box-shadow:0 8px 20px rgba(229,0,141,.15);
+}
+
+/* flecha */
 .primary-nav__link span{
     color:var(--pink);
     font-weight:800;
+    transition:0.3s;
 }
 
+.primary-nav__link[aria-expanded="true"] span{
+    transform:rotate(90deg);
+}
+
+/* SUBMENÚ */
 .submenu{
     margin-top:8px;
-    padding-left:0;
+    padding:0;
     list-style:none;
 
     display:flex;
@@ -259,6 +262,7 @@ html{
     gap:8px;
 }
 
+/* LINKS SUBMENU */
 .submenu__link{
     display:block;
     padding:10px 14px;
