@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-/*madre de java*/
+/*madre de javascript*/
 (function() {
   const SESSION_KEY = 'liverpool_auth_session';
   
@@ -62,17 +61,21 @@
     
     let valid = true;
     if(!email.includes('@')) {
-      document.getElementById('login-email-error').textContent = 'Ingresa un correo válido.';
+      const err = document.getElementById('login-email-error');
+      if(err) err.textContent = 'Ingresa un correo válido.';
       valid = false;
     } else {
-      document.getElementById('login-email-error').textContent = '';
+      const err = document.getElementById('login-email-error');
+      if(err) err.textContent = '';
     }
 
     if(pass.length < 8) {
-      document.getElementById('login-pass-error').textContent = 'Mínimo 8 caracteres.';
+      const err = document.getElementById('login-pass-error');
+      if(err) err.textContent = 'Mínimo 8 caracteres.';
       valid = false;
     } else {
-      document.getElementById('login-pass-error').textContent = '';
+      const err = document.getElementById('login-pass-error');
+      if(err) err.textContent = '';
     }
 
     if(valid) {
@@ -92,69 +95,80 @@
     
     let valid = true;
     
-// 1. Validar Nombre
+    // 1. Validar Nombre
     if(name === "") {
-      document.getElementById('reg-name-error').textContent = 'Ingresa tu nombre.';
+      const err = document.getElementById('reg-name-error');
+      if(err) err.textContent = 'Ingresa tu nombre.';
       valid = false;
     } else {
-      document.getElementById('reg-name-error').textContent = '';
+      const err = document.getElementById('reg-name-error');
+      if(err) err.textContent = '';
     }
 
     // 2. Validar Apellido
     if(lastname === "") {
-      document.getElementById('reg-lastname-error').textContent = 'Ingresa tu apellido.';
+      const err = document.getElementById('reg-lastname-error');
+      if(err) err.textContent = 'Ingresa tu apellido.';
       valid = false;
     } else {
-      document.getElementById('reg-lastname-error').textContent = '';
+      const err = document.getElementById('reg-lastname-error');
+      if(err) err.textContent = '';
     }
 
     // 3. Validar Fecha de Nacimiento y Mayoría de Edad (18 años)
     if(birthdateVal === "") {
-      document.getElementById('reg-birth-error').textContent = 'Selecciona tu fecha de nacimiento.';
+      const err = document.getElementById('reg-birth-error');
+      if(err) err.textContent = 'Selecciona tu fecha de nacimiento.';
       valid = false;
     } else {
-      // Cálculo de edad preciso
       const birthDate = new Date(birthdateVal);
       const today = new Date();
       
       let age = today.getFullYear() - birthDate.getFullYear();
       const monthDifference = today.getMonth() - birthDate.getMonth();
       
-      // Ajuste por si aún no pasa su cumpleaños en el año actual
       if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
         age--;
       }
 
       if(age < 18) {
-        document.getElementById('reg-birth-error').textContent = 'Debes ser mayor de 18 años para registrarte.';
+        const err = document.getElementById('reg-birth-error');
+        if(err) err.textContent = 'Debes ser mayor de 18 años para registrarte.';
         valid = false;
       } else {
-        document.getElementById('reg-birth-error').textContent = '';
+        const err = document.getElementById('reg-birth-error');
+        if(err) err.textContent = '';
       }
     }
 
     // 4. Validar Sexo / Género
     if(gender === "") {
-      document.getElementById('reg-gender-error').textContent = 'Selecciona una opción.';
+      const err = document.getElementById('reg-gender-error');
+      if(err) err.textContent = 'Selecciona una opción.';
       valid = false;
     } else {
-      document.getElementById('reg-gender-error').textContent = '';
+      const err = document.getElementById('reg-gender-error');
+      if(err) err.textContent = '';
     }
 
     // 5. Validar Correo Electrónico
     if(!email.includes('@')) {
-      document.getElementById('reg-email-error').textContent = 'Correo inválido.';
+      const err = document.getElementById('reg-email-error');
+      if(err) err.textContent = 'Correo inválido.';
       valid = false;
     } else {
-      document.getElementById('reg-email-error').textContent = '';
+      const err = document.getElementById('reg-email-error');
+      if(err) err.textContent = '';
     }
 
     // 6. Validar Contraseña
     if(pass.length < 8) {
-      document.getElementById('reg-pass-error').textContent = 'Mínimo 8 caracteres.';
+      const err = document.getElementById('reg-pass-error');
+      if(err) err.textContent = 'Mínimo 8 caracteres.';
       valid = false;
     } else {
-      document.getElementById('reg-pass-error').textContent = '';
+      const err = document.getElementById('reg-pass-error');
+      if(err) err.textContent = '';
     }
 
     if(valid) {
@@ -186,7 +200,6 @@
     } catch (_) { }
 
     if (!hasSession) {
-      // Si no ha iniciado sesión, muestra el modal y congela la pantalla
       if (overlay) {
         overlay.style.display = 'flex';
         overlay.hidden = false;
@@ -199,207 +212,137 @@
         modal.removeAttribute('hidden');
         modal.setAttribute('open', '');
       }
-      showScreen(1); // Muestra la pantalla de login por defecto
+      showScreen(1);
     } else {
-      // Si ya inició sesión antes, limpia todo rastro de bloqueo de inmediato
       forceUnlockSite();
     }
   }
 
-  // Arranca el script cuando el HTML esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAuthGate);
   } else {
     initAuthGate();
   }
 })();
-=======
-// =========================
-// Cosas para java
-// ========================
-<<<<<<< HEAD
 
-const settingsBtn = document.querySelector('.settings-btn');
-
-const personalizationPanel =
-document.getElementById('personalization-panel');
-
-const closePersonalization =
-document.querySelector('[data-action="close-personalization"]');
-
-
-// ABRIR PANEL
-settingsBtn.addEventListener('click', () => {
-
-    personalizationPanel.hidden = false;
-
-});
-
-
-// CERRAR PANEL
-closePersonalization.addEventListener('click', () => {
-
-    personalizationPanel.hidden = true;
-
-});
-
-
-//parte donde si jalan los settings
-
-// ==========================
-// MODO OSCURO
-// ==========================
-
-const darkBtn = document.querySelector('[data-theme="dark"]');
-const lightBtn = document.querySelector('[data-theme="light"]');
-
-darkBtn.addEventListener('click', () => {
-
-    document.body.classList.add('dark-mode');
-
-});
-
-lightBtn.addEventListener('click', () => {
-
-    document.body.classList.remove('dark-mode');
-
-});
-
-
-// ==========================
-// TAMAÑO DE TEXTO
-// ==========================
-
-let currentSize = 100;
-
-const fontValue = document.getElementById('font-size-value');
-
-const increaseBtn =
-document.querySelector('[data-action="increase-font"]');
-
-const decreaseBtn =
-document.querySelector('[data-action="decrease-font"]');
-
-const resetBtn =
-document.querySelector('[data-action="reset-font"]');
-
-
-// AUMENTAR
-increaseBtn.addEventListener('click', () => {
-
-    currentSize = Math.min(currentSize + 10, 150)
-
-    document.body.style.fontSize = currentSize + '%';
-
-    fontValue.textContent = currentSize + '%';
-
-});
-
-
-// DISMINUIR
-decreaseBtn.addEventListener('click', () => {
-
-    currentSize = Math.max(currentSize - 10, 100);
-
-    document.body.style.fontSize = currentSize + '%';
-
-    fontValue.textContent = currentSize + '%';
-
-});
-
-
-// RESET
-resetBtn.addEventListener('click', () => {
-
-    currentSize = 100;
-
-    document.body.style.fontSize = '100%';
-
-    fontValue.textContent = '100%';
-
-});
-
-//=========================================================================================================================
-
+// =========================================================================================================================
+// INTERFACES GENERALES (MENU Y SETTINGS) - SE SEGURO TRAS CARGAR EL DOM
+// =========================================================================================================================
 document.addEventListener("DOMContentLoaded", () => {
 
+  // --- SETTINGS / PANEL DE PERSONALIZACIÓN ---
+  const settingsBtn = document.querySelector('.settings-btn');
+  const personalizationPanel = document.getElementById('personalization-panel');
+  const closePersonalization = document.querySelector('[data-action="close-personalization"]');
+
+  // Aseguramos que existan antes de asignar el evento para evitar errores catastróficos
+  if (settingsBtn && personalizationPanel) {
+    settingsBtn.addEventListener('click', () => {
+      personalizationPanel.hidden = false;
+    });
+  }
+
+  if (closePersonalization && personalizationPanel) {
+    closePersonalization.addEventListener('click', () => {
+      personalizationPanel.hidden = true;
+    });
+  }
+
+  // --- MODO OSCURO ---
+  const darkBtn = document.querySelector('[data-theme="dark"]');
+  const lightBtn = document.querySelector('[data-theme="light"]');
+
+  darkBtn?.addEventListener('click', () => {
+    document.body.classList.add('dark-mode');
+  });
+
+  lightBtn?.addEventListener('click', () => {
+    document.body.classList.remove('dark-mode');
+  });
+
+  // --- TAMAÑO DE TEXTO ---
+  let currentSize = 100;
+  const fontValue = document.getElementById('font-size-value');
+  const increaseBtn = document.querySelector('[data-action="increase-font"]');
+  const decreaseBtn = document.querySelector('[data-action="decrease-font"]');
+  const resetBtn = document.querySelector('[data-action="reset-font"]');
+
+  increaseBtn?.addEventListener('click', () => {
+    currentSize = Math.min(currentSize + 10, 150);
+    document.body.style.fontSize = currentSize + '%';
+    if (fontValue) fontValue.textContent = currentSize + '%';
+  });
+
+  decreaseBtn?.addEventListener('click', () => {
+    currentSize = Math.max(currentSize - 10, 100);
+    document.body.style.fontSize = currentSize + '%';
+    if (fontValue) fontValue.textContent = currentSize + '%';
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    currentSize = 100;
+    document.body.style.fontSize = '100%';
+    if (fontValue) fontValue.textContent = '100%';
+  });
+
+  // --- MENÚ PRINCIPAL Y SUBMENÚS ---
   const nav = document.getElementById("primary-nav");
   const toggleBtn = document.querySelector('[data-action="toggle-menu"]');
 
-  // =========================
-  // MENÚ PRINCIPAL
-  // =========================
   if (nav && toggleBtn) {
-
     toggleBtn.addEventListener("click", () => {
-
       const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
-
       nav.hidden = isOpen;
       toggleBtn.setAttribute("aria-expanded", String(!isOpen));
 
-      // icono hamburguesa
       toggleBtn.innerHTML = !isOpen
         ? '<span aria-hidden="true">☰</span>'
         : '<span aria-hidden="true">☰</span>';
 
-      // si se cierra, cerrar submenús también
       if (isOpen) {
-        document.querySelectorAll(".submenu").forEach(menu => menu.hidden = true);
+        document.querySelectorAll(".submenu").forEach(menu => {
+          menu.style.display = "none";
+          menu.hidden = true;
+        });
 
         document.querySelectorAll(".primary-nav__link--toggle").forEach(btn => {
           btn.setAttribute("aria-expanded", "false");
         });
       }
-
     });
-
   }
 
-  // =========================
-  // SUBMENÚS (ACORDEÓN) - VERSIÓN DEFINITIVA
-  // =========================
+  // SUBMENÚS (ACORDEÓN DESDE EL PADRE)
   if (nav) {
     nav.addEventListener("click", (event) => {
-      // 1. Detectar si lo que el usuario tocó fue el botón o algo dentro de él
       const btn = event.target.closest(".primary-nav__link--toggle");
-      
-      // Si no tocó un botón de submenú, ignoramos el click
       if (!btn) return;
 
-      // Evitamos que el botón intente recargar la página o hacer cosas raras
       event.preventDefault();
 
       const submenuId = btn.getAttribute("aria-controls");
       const submenu = document.getElementById(submenuId);
-      
-      // 2. Guardar el estado actual (¿Estaba abierto?)
       const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-      // 3. CERRAR TODOS los botones y submenús primero
+      // Resetear todos los demás submenús
       const allButtons = nav.querySelectorAll(".primary-nav__link--toggle");
       allButtons.forEach(b => {
         b.setAttribute("aria-expanded", "false");
         const sub = document.getElementById(b.getAttribute("aria-controls"));
         if (sub) {
-          sub.style.display = "none"; // Forzamos por inline style para ganarle al CSS
+          sub.style.display = "none";
           sub.hidden = true;
         }
       });
 
-      // 4. Si el botón NO estaba abierto, lo abrimos
+      // Alternar el actual
       if (!isOpen) {
         btn.setAttribute("aria-expanded", "true");
         if (submenu) {
-          submenu.style.display = "block"; // Forzamos la aparición
+          submenu.style.display = "block";
           submenu.hidden = false;
         }
       }
-      // Si SÍ estaba abierto, se queda cerrado gracias al paso 3.
     });
   }
-
 });
-=======
->>>>>>> 84842e428063ec4a650969b71b212aa9d21848a0
->>>>>>> 397b85d91adc1303ac77567c26556908e0c7e5e5

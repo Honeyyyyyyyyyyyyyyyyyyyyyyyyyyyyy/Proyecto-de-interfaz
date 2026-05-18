@@ -299,10 +299,10 @@
             class="primary-nav__link primary-nav__link--toggle"
             aria-haspopup="true" aria-expanded="false"
             aria-controls="submenu-mujeres">
-            Mujeres <span aria-hidden="true">▾</span>
+            Mujeres <span aria-hidden="true"> > </span>
           </button>
           <ul id="submenu-mujeres" class="submenu" role="list"
-            aria-label="Subcategorías de Mujeres" hidden>
+            aria-label="Subcategorías de Mujeres">
             <li><a href="#" class="submenu__link">Ropa</a></li>
             <li><a href="#" class="submenu__link">Calzado</a></li>
             <li><a href="#" class="submenu__link">Accesorios</a></li>
@@ -314,10 +314,10 @@
             class="primary-nav__link primary-nav__link--toggle"
             aria-haspopup="true" aria-expanded="false"
             aria-controls="submenu-hombres">
-            Hombres <span aria-hidden="true">▾</span>
+            Hombres <span aria-hidden="true"> > </span>
           </button>
           <ul id="submenu-hombres" class="submenu" role="list"
-            aria-label="Subcategorías de Hombres" hidden>
+            aria-label="Subcategorías de Hombres">
             <li><a href="#" class="submenu__link">Ropa</a></li>
             <li><a href="#" class="submenu__link">Calzado</a></li>
             <li><a href="#" class="submenu__link">Deportes</a></li>
@@ -328,10 +328,10 @@
             class="primary-nav__link primary-nav__link--toggle"
             aria-haspopup="true" aria-expanded="false"
             aria-controls="submenu-ninos">
-            Niños <span aria-hidden="true">▾</span>
+            Niños <span aria-hidden="true"> > </span>
           </button>
           <ul id="submenu-ninos" class="submenu" role="list"
-            aria-label="Subcategorías de Niños" hidden>
+            aria-label="Subcategorías de Niños">
             <li><a href="#" class="submenu__link">Ropa</a></li>
             <li><a href="#" class="submenu__link">Juguetes</a></li>
             <li><a href="#" class="submenu__link">Calzado</a></li>
@@ -342,17 +342,17 @@
             class="primary-nav__link primary-nav__link--toggle"
             aria-haspopup="true" aria-expanded="false"
             aria-controls="submenu-tecnologia">
-            Tecnología <span aria-hidden="true">▾</span>
+            Tecnología <span aria-hidden="true"> > </span>
           </button>
           <ul id="submenu-tecnologia" class="submenu" role="list"
-            aria-label="Subcategorías de Tecnología" hidden>
+            aria-label="Subcategorías de Tecnología">
             <li><a href="#" class="submenu__link">Celulares</a></li>
             <li><a href="#" class="submenu__link">Laptops</a></li>
             <li><a href="#" class="submenu__link">Audio</a></li>
             <li><a href="#" class="submenu__link">Tablets</a></li>
           </ul>
         </li>
-        <li class="primary-nav__item primary-nav__item--has-submenu">
+        <!-- <li class="primary-nav__item primary-nav__item--has-submenu">
           <button type="button"
             class="primary-nav__link primary-nav__link--toggle"
             aria-haspopup="true" aria-expanded="false"
@@ -366,16 +366,16 @@
             <li><a href="#" class="submenu__link">Recámara</a></li>
             <li><a href="#" class="submenu__link">Decoración</a></li>
           </ul>
-        </li>
+        </li> -->
         <li class="primary-nav__item primary-nav__item--has-submenu">
           <button type="button"
             class="primary-nav__link primary-nav__link--toggle"
             aria-haspopup="true" aria-expanded="false"
             aria-controls="submenu-deportes">
-            Deportes <span aria-hidden="true">▾</span>
+            Deportes <span aria-hidden="true"> > </span>
           </button>
           <ul id="submenu-deportes" class="submenu" role="list"
-            aria-label="Subcategorías de Deportes" hidden>
+            aria-label="Subcategorías de Deportes">
             <li><a href="#" class="submenu__link">Fútbol</a></li>
             <li><a href="#" class="submenu__link">Running</a></li>
             <li><a href="#" class="submenu__link">Fitness</a></li>
@@ -386,27 +386,35 @@
           <a href="jerseys.html"
             class="primary-nav__link"
             >
-            Jerseys del Mundial
+            Jerseys del Mundial >
           </a>
         </li>
 
-        <li class="primary-nav__item">
+        <!-- <li class="primary-nav__item">
           <a href="mexico.html"
             class="primary-nav__link"
             >
             Selección México
           </a>
-        </li>
+        </li> -->
 
         <li class="primary-nav__item">
           <a href="juguetes.html"
-            class="primary-nav__link primary-nav__link--highlight  primary-nav__link--active"
-            aria-current="page">
-            Ofertas
+            class="primary-nav__link primary-nav__link--highlight"
+            >
+            Ofertas >
           </a>
         </li>
 
       </ul>
+
+      <!-- <button type="button"
+        class="primary-nav__close"
+        aria-label="Cerrar menú de navegación"
+        aria-controls="primary-nav"
+        data-action="close-nav">
+        ✕ Cerrar
+      </button> -->
     </nav>
 
   </header><!-- /site-header -->
@@ -967,6 +975,8 @@ resetBtn.addEventListener('click', () => {
 });
 
 </script>
+
+<script src="CodigoJavaa.js"></script> 
 
 </body>
 </html>
