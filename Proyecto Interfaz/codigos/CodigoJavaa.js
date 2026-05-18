@@ -34,3 +34,12 @@ dialog.addEventListener('click', (e) => {
 dialog.addEventListener('cancel', (e) => {
     dialog.close();
 });
+
+// =========================
+// ABRIR AUTOMÁTICAMENTE AL ENTRAR
+// =========================
+window.addEventListener('DOMContentLoaded', () => {
+    if (!sessionStorage.getItem('logged')) {
+        dialog.showModal();
+    }
+});
