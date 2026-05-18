@@ -1317,3 +1317,50 @@ body.auth-locked {
 
     box-shadow: 0 0 30px rgba(0,0,0,0.3);
 }
+
+/* =========================
+   FIX MODO OSCURO
+========================= */
+
+/* Texto visible */
+.dark-mode p,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode span,
+.dark-mode li,
+.dark-mode label,
+.dark-mode output {
+    color: #ffffff;
+}
+
+/* Cajas blancas */
+.dark-mode .product-card,
+.dark-mode .auth-modal,
+.dark-mode .personalization-panel,
+.dark-mode .settings-popup,
+.dark-mode .novedad-card,
+.dark-mode .offer-promo-card,
+.dark-mode .gifting-card {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Inputs */
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    background: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #555;
+}
+
+/* Botones secundarios */
+.dark-mode .btn--secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #666;
+}
