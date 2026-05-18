@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Descubre las mejores ofertas en juguetes, tecnología y ropa en Liverpool." />
+  <meta name="theme-color" content="#E91E8C" />
+  <meta property="og:title"       content="Ofertas y Juguetes – Liverpool" />
+  <meta property="og:description" content="Descubre las mejores ofertas en juguetes, tecnología y ropa en Liverpool." />
+  <meta property="og:type"        content="website" />
+  <title>Ofertas y Juguetes – Liverpool</title>
+  <!--
+    ============================================================
+    Liverpool E-commerce — Prototipo Multi-página
+    Fase 1: HTML Semántico · Mobile-First · WCAG 2.1
+    Página : juguetes
+    Nuevas características:
+      1. Login modal            5. Toast "agregado a bolsa"
+      2. Dark mode toggle       6. Menú hamburguesa
+      3. Ratings con estrellas  7. Carrito lateral (sidebar)
+      4. Mini galería en cards
+    ============================================================
+  -->
+</head>
+
+<body class="page-juguetes" data-theme="light">
+
+  <!-- ── SKIP LINK — WCAG 2.4.1 Bypass Blocks ── -->
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FEATURE 5 · TOAST — Popup "Producto agregado a la bolsa"
+       Oculto por defecto; JS lo activa añadiendo clase .is-visible
+       ══════════════════════════════════════════════════════════════ -->
+  <div
+    id="cart-toast"
+    class="cart-toast"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    aria-hidden="true"
+    hidden
+  >
+    <div class="cart-toast__inner">
+      <span class="cart-toast__icon" aria-hidden="true">🛍️</span>
+      <p class="cart-toast__message">
+        <strong>¡Producto agregado a la bolsa!</strong>
+      </p>
+      <a href="bolsa.html" class="cart-toast__link"
+        aria-label="Ver mi bolsa de compras">Ver bolsa</a>
+      <button
+        type="button"
+        class="cart-toast__close"
+        aria-label="Cerrar notificación"
+        data-action="close-toast"
+      >✕</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FEATURE 7 · CARRITO LATERAL (SIDEBAR DRAWER)
+       Oculto por defecto; JS añade clase .is-open para deslizarlo
+       ══════════════════════════════════════════════════════════════ -->
+
+  <!-- Overlay / backdrop -->
+  <div
+    id="sidebar-cart-overlay"
+    class="sidebar-cart-overlay"
+    aria-hidden="true"
+    data-action="close-sidebar-cart"
+  ></div>
+
+  <!-- Drawer -->
+  <aside
+    id="sidebar-cart"
+    class="sidebar-cart"
+    aria-label="Carrito lateral de compras"
+    aria-modal="true"
+    role="dialog"
+    aria-labelledby="sidebar-cart-title"
+    aria-hidden="true"
+    hidden
+  >
+    <div class="sidebar-cart__inner">
+
+      <!-- Header del drawer -->
+      <header class="sidebar-cart__header">
+        <h2 id="sidebar-cart-title" class="sidebar-cart__title">
+          <span aria-hidden="true">🛍️</span> Mi Bolsa
+          <span class="sidebar-cart__count"
+            aria-label="3 artículos en la bolsa">(3)</span>
+        </h2>
+        <button
+          type="button"
+          class="btn btn--close sidebar-cart__close"
+          aria-label="Cerrar carrito lateral"
+          data-action="close-sidebar-cart"
+        >✕</button>
+      </header>
+
+      <!-- Lista de artículos (preview) -->
+      <section class="sidebar-cart__items" aria-label="Artículos en tu bolsa">
+
+        <!-- Artículo 1 -->
+        <article class="sidebar-item" aria-label="Jersey Local México 26">
+          <figure class="sidebar-item__figure">
+            <img
+              src="assets/images/jerseys/jersey-mexico-local-26-jugador.jpg"
+              alt="Jersey Local Selección México 26, verde, talla L"
+              width="64" height="64"
+              loading="lazy"
+              class="sidebar-item__img"
+            />
+          </figure>
+          <div class="sidebar-item__info">
+            <h3 class="sidebar-item__name">Jersey Local México 26</h3>
+            <p class="sidebar-item__meta">Talla: L · Verde</p>
+            <div class="sidebar-item__qty-row">
+              <div class="quantity-stepper quantity-stepper--compact"
+                role="group" aria-label="Cantidad de Jersey México 26">
+                <button type="button" class="btn btn--qty"
+                  aria-label="Reducir cantidad" data-action="decrease-qty"
+                  data-item-id="jersey-mexico-26">−</button>
+                <output class="qty-display"
+                  aria-label="Cantidad actual: 1">1</output>
+                <button type="button" class="btn btn--qty"
+                  aria-label="Aumentar cantidad" data-action="increase-qty"
+                  data-item-id="jersey-mexico-26">+</button>
+              </div>
+              <p class="sidebar-item__price"><strong>$2,990 MXN</strong></p>
+            </div>
+          </div>
+          <button type="button"
+            class="sidebar-item__remove"
+            aria-label="Eliminar Jersey Local México 26 de la bolsa"
+            data-action="remove-item" data-item-id="jersey-mexico-26">✕</button>
+        </article>
+
+        <!-- Artículo 2 -->
+        <article class="sidebar-item" aria-label="Audífonos EXL True Wireless">
+          <figure class="sidebar-item__figure">
+            <img
+              src="assets/images/trending/exl-audifonos.jpg"
+              alt="Audífonos EXL True Wireless, color negro"
+              width="64" height="64"
+              loading="lazy"
+              class="sidebar-item__img"
+            />
+          </figure>
+          <div class="sidebar-item__info">
+            <h3 class="sidebar-item__name">Audífonos True Wireless EXL</h3>
+            <p class="sidebar-item__meta">Color: Negro</p>
+            <div class="sidebar-item__qty-row">
+              <div class="quantity-stepper quantity-stepper--compact"
+                role="group" aria-label="Cantidad de Audífonos EXL">
+                <button type="button" class="btn btn--qty"
+                  aria-label="Reducir cantidad" data-action="decrease-qty"
+                  data-item-id="exl-audifonos">−</button>
+                <output class="qty-display"
+                  aria-label="Cantidad actual: 1">1</output>
+                <button type="button" class="btn btn--qty"
+                  aria-label="Aumentar cantidad" data-action="increase-qty"
+                  data-item-id="exl-audifonos">+</button>
+              </div>
+              <p class="sidebar-item__price"><strong>$1,699 MXN</strong></p>
+            </div>
+          </div>
+          <button type="button"
+            class="sidebar-item__remove"
+            aria-label="Eliminar Audífonos EXL de la bolsa"
+            data-action="remove-item" data-item-id="exl-audifonos">✕</button>
+        </article>
+
+        <!-- Artículo 3 -->
+        <article class="sidebar-item" aria-label="Auto Mattel Escala 1:18">
+          <figure class="sidebar-item__figure">
+            <img
+              src="assets/images/juguetes/auto-mattel.jpg"
+              alt="Auto de juguete Mattel amarillo, escala 1:18"
+              width="64" height="64"
+              loading="lazy"
+              class="sidebar-item__img"
+            />
+          </figure>
+          <div class="sidebar-item__info">
+            <h3 class="sidebar-item__name">Auto Mattel Escala 1:18</h3>
+            <p class="sidebar-item__meta">Color: Amarillo</p>
+            <div class="sidebar-item__qty-row">
+              <div class="quantity-stepper quantity-stepper--compact"
+                role="group" aria-label="Cantidad de Auto Mattel">
+                <button type="button" class="btn btn--qty"
+                  aria-label="Reducir cantidad" data-action="decrease-qty"
+                  data-item-id="auto-mattel">−</button>
+                <output class="qty-display"
+                  aria-label="Cantidad actual: 1">1</output>
+                <button type="button" class="btn btn--qty"
+                  aria-label="Aumentar cantidad" data-action="increase-qty"
+                  data-item-id="auto-mattel">+</button>
+              </div>
+              <p class="sidebar-item__price"><strong>$1,599 MXN</strong></p>
+            </div>
+          </div>
+          <button type="button"
+            class="sidebar-item__remove"
+            aria-label="Eliminar Auto Mattel de la bolsa"
+            data-action="remove-item" data-item-id="auto-mattel">✕</button>
+        </article>
+
+      </section><!-- /sidebar-cart__items -->
+
+      <!-- Resumen y CTA -->
+      <footer class="sidebar-cart__footer">
+        <dl class="sidebar-cart__subtotal">
+          <div class="sidebar-cart__subtotal-row">
+            <dt>Subtotal</dt>
+            <dd aria-live="polite" aria-atomic="true">
+              <strong>$6,288 MXN</strong>
+            </dd>
+          </div>
+          <div class="sidebar-cart__subtotal-row">
+            <dt>Envío</dt>
+            <dd><span class="price-free">Gratis</span></dd>
+          </div>
+        </dl>
+        <a href="bolsa.html"
+          class="btn btn--primary btn--wide"
+          aria-label="Ir a mi bolsa para proceder al pago">
+          Ver mi bolsa y pagar
+        </a>
+        <button
+          type="button"
+          class="btn btn--ghost btn--wide"
+          aria-label="Cerrar carrito y continuar comprando"
+          data-action="close-sidebar-cart"
+        >
+          Continuar comprando
+        </button>
+      </footer>
+
+    </div><!-- /sidebar-cart__inner -->
+  </aside>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ONBOARDING DIALOG — guía paso a paso (oculto por defecto)
+       ══════════════════════════════════════════════════════════════ -->
+  <dialog id="onboarding-dialog" role="dialog" aria-modal="true"
+    aria-labelledby="onboarding-title"
+    aria-describedby="onboarding-description" hidden>
+    <article class="onboarding-wrapper">
+      <header class="onboarding-header">
+        <h2 id="onboarding-title">Bienvenido a Liverpool</h2>
+        <p id="onboarding-description">
+          Te guiaremos en unos sencillos pasos para que aproveches al máximo
+          tu experiencia de compra.
+        </p>
+        <button type="button" class="btn-close"
+          aria-label="Cerrar guía de bienvenida"
+          data-action="close-onboarding">✕</button>
+      </header>
+      <nav aria-label="Pasos de incorporación">
+        <ol class="onboarding-steps" role="list">
+          <li class="step step--active" aria-current="step" data-step="1">
+            <span class="step__number" aria-hidden="true">1</span>
+            <span class="step__label">Explora</span>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step__number" aria-hidden="true">2</span>
+            <span class="step__label">Agrega</span>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step__number" aria-hidden="true">3</span>
+            <span class="step__label">Compra</span>
+          </li>
+          <li class="step" data-step="4">
+            <span class="step__number" aria-hidden="true">4</span>
+            <span class="step__label">Disfruta</span>
+          </li>
+        </ol>
+      </nav>
+      <section class="onboarding-panel" id="panel-step-1"
+        aria-labelledby="panel-step-1-heading" data-panel="1">
+        <h3 id="panel-step-1-heading">Paso 1 – Explora nuestro catálogo</h3>
+        <p>Usa la barra de búsqueda o navega por categorías para descubrir
+          miles de productos exclusivos para ti.</p>
+      </section>
+      <section class="onboarding-panel" id="panel-step-2"
+        aria-labelledby="panel-step-2-heading" data-panel="2" hidden>
+        <h3 id="panel-step-2-heading">Paso 2 – Agrega a tu bolsa</h3>
+        <p>Selecciona tu talla, color y cantidad. Luego presiona
+          <strong>"Agregar a mi bolsa"</strong> para guardar tus artículos.</p>
+      </section>
+      <section class="onboarding-panel" id="panel-step-3"
+        aria-labelledby="panel-step-3-heading" data-panel="3" hidden>
+        <h3 id="panel-step-3-heading">Paso 3 – Realiza tu compra</h3>
+        <p>Revisa tu bolsa, elige tu método de pago favorito y confirma tu
+          pedido en segundos.</p>
+      </section>
+      <section class="onboarding-panel" id="panel-step-4"
+        aria-labelledby="panel-step-4-heading" data-panel="4" hidden>
+        <h3 id="panel-step-4-heading">Paso 4 – Recibe y disfruta</h3>
+        <p>Haz seguimiento de tu pedido en tiempo real y recíbelo en la
+          comodidad de tu hogar.</p>
+      </section>
+      <footer class="onboarding-footer">
+        <button type="button" class="btn btn--secondary"
+          data-action="prev-step" disabled>Anterior</button>
+        <button type="button" class="btn btn--primary"
+          data-action="next-step">Siguiente</button>
+        <button type="button" class="btn btn--ghost"
+          data-action="skip-onboarding">Omitir guía</button>
+      </footer>
+    </article>
+  </dialog>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       PANEL DE PERSONALIZACIÓN
+       FEATURE 2 · Dark mode toggle
+       FEATURE 3 · Texto escalable A− / A+
+       ══════════════════════════════════════════════════════════════ -->
+  <aside id="personalization-panel" class="personalization-panel"
+    aria-label="Panel de personalización"
+    aria-hidden="true" hidden>
+    <div class="personalization-panel__inner">
+      <h2 class="personalization-panel__title">Personalización</h2>
+
+      <!-- Tamaño de texto -->
+      <section class="personalization-section"
+        aria-labelledby="font-size-heading">
+        <h3 id="font-size-heading" class="personalization-section__heading">
+          Tamaño de texto
+        </h3>
+        <div class="font-size-controls" role="group"
+          aria-label="Controles de tamaño de texto">
+          <button type="button" class="btn btn--icon"
+            aria-label="Reducir tamaño de texto"
+            data-action="decrease-font">
+            <span aria-hidden="true">A−</span>
+          </button>
+          <output id="font-size-value" class="font-size-value"
+            aria-live="polite"
+            aria-label="Tamaño actual de texto">100%</output>
+          <button type="button" class="btn btn--icon"
+            aria-label="Aumentar tamaño de texto"
+            data-action="increase-font">
+            <span aria-hidden="true">A+</span>
+          </button>
+        </div>
+        <button type="button" class="btn btn--ghost btn--small"
+          data-action="reset-font">Restablecer</button>
+      </section>
+
+      <!-- FEATURE 2 · Apariencia / Dark mode -->
+      <section class="personalization-section"
+        aria-labelledby="appearance-heading">
+        <h3 id="appearance-heading" class="personalization-section__heading">
+          Apariencia
+        </h3>
+        <div class="appearance-toggle" role="group"
+          aria-label="Seleccionar modo de apariencia">
+          <button type="button"
+            class="btn btn--appearance btn--appearance-active"
+            aria-pressed="true"
+            data-theme="light"
+            aria-label="Activar modo claro (activo actualmente)"
+            data-action="set-theme">
+            <span aria-hidden="true">☀️</span> Claro
+          </button>
+          <button type="button"
+            class="btn btn--appearance"
+            aria-pressed="false"
+            data-theme="dark"
+            aria-label="Activar modo oscuro"
+            data-action="set-theme">
+            <span aria-hidden="true">🌙</span> Oscuro
+          </button>
+        </div>
+        <!-- Hidden checkbox fallback for CSS-only dark mode -->
+        <input type="checkbox" id="dark-mode-toggle-checkbox"
+          class="dark-mode-checkbox sr-only"
+          aria-label="Alternar modo oscuro"
+          role="switch"
+          aria-checked="false" />
+        <label for="dark-mode-toggle-checkbox"
+          class="dark-mode-switch-label"
+          aria-hidden="true">
+          <span class="dark-mode-switch-label__track">
+            <span class="dark-mode-switch-label__thumb"></span>
+          </span>
+          <span class="dark-mode-switch-label__text">Modo oscuro</span>
+        </label>
+      </section>
+
+      <button type="button"
+        class="btn btn--close personalization-panel__close"
+        aria-label="Cerrar panel de personalización"
+        data-action="close-personalization">✕ Cerrar</button>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FEATURE 1 · MODAL DE INICIO DE SESIÓN
+       Oculto por defecto; se abre desde el botón "Iniciar sesión"
+       del header. JS añade/quita el atributo [open] del <dialog>.
+       ══════════════════════════════════════════════════════════════ -->
+  <dialog id="login-dialog" class="login-dialog"
+    role="dialog" aria-modal="true"
+    aria-labelledby="login-dialog-title" hidden>
+    <div class="login-dialog__inner">
+
+      <button type="button"
+        class="btn btn--close login-dialog__close"
+        aria-label="Cerrar ventana de inicio de sesión"
+        data-action="close-login">✕</button>
+
+      <header class="login-dialog__header">
+        <img src="assets/images/liverpool-logo.svg" alt="Liverpool"
+          width="120" height="40"
+          class="login-dialog__logo" loading="lazy" />
+        <h2 id="login-dialog-title" class="login-dialog__title">
+          Iniciar sesión
+        </h2>
+        <p class="login-dialog__subtitle">
+          Recuerda que con una sola cuenta puedes ingresar a todas
+          nuestras tiendas.
+        </p>
+      </header>
+
+      <form class="login-form" action="#" method="post"
+        novalidate aria-label="Formulario de inicio de sesión">
+
+        <div class="form-field">
+          <label for="login-email" class="form-field__label">
+            Correo electrónico <abbr title="requerido">*</abbr>
+          </label>
+          <input type="email" id="login-email" name="email"
+            class="form-field__input"
+            placeholder="ejemplo@correo.com"
+            autocomplete="email"
+            required aria-required="true"
+            aria-describedby="login-email-error" />
+          <p id="login-email-error" class="form-field__error"
+            role="alert" aria-live="polite" hidden>
+            Por favor ingresa un correo electrónico válido.
+          </p>
+        </div>
+
+        <div class="form-field">
+          <label for="login-password" class="form-field__label">
+            Contraseña <abbr title="requerido">*</abbr>
+          </label>
+          <div class="form-field__password-wrapper">
+            <input type="password" id="login-password" name="password"
+              class="form-field__input"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required aria-required="true"
+              aria-describedby="login-password-error" />
+            <button type="button" class="btn btn--password-toggle"
+              aria-label="Mostrar contraseña"
+              aria-pressed="false"
+              data-action="toggle-password">👁</button>
+          </div>
+          <p id="login-password-error" class="form-field__error"
+            role="alert" aria-live="polite" hidden>
+            Por favor ingresa tu contraseña.
+          </p>
+        </div>
+
+        <a href="#" class="login-form__forgot"
+          aria-label="Ir a recuperación de contraseña">
+          ¿Olvidaste tu contraseña?
+        </a>
+
+        <button type="submit"
+          class="btn btn--primary btn--wide btn--large"
+          aria-label="Iniciar sesión en Liverpool">
+          Iniciar sesión
+        </button>
+
+        <div class="login-form__divider" role="separator" aria-hidden="true">
+          <span>o</span>
+        </div>
+
+        <p class="login-form__register">
+          ¿No tienes cuenta?
+          <a href="#" class="login-form__register-link">Crea una aquí</a>
+        </p>
+
+        <div class="social-login">
+          <button type="button" class="btn btn--social"
+            aria-label="Continuar el inicio de sesión con Google">
+            <img src="assets/icons/google-logo.svg" alt=""
+              aria-hidden="true" width="20" height="20" />
+            Continuar con Google
+          </button>
+        </div>
+      </form>
+
+      <footer class="login-dialog__footer">
+        <nav aria-label="Términos y privacidad">
+          <ul class="login-legal" role="list">
+            <li>
+              <a href="#" class="login-legal__link">
+                Términos y condiciones
+              </a>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <a href="#" class="login-legal__link">
+                Aviso de privacidad 2026
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+
+    </div>
+  </dialog>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ENCABEZADO DEL SITIO
+       FEATURE 1 · Botón "Iniciar sesión" en barra de utilidades
+       FEATURE 6 · Botón hamburguesa controla <nav id="primary-nav">
+       ══════════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+
+    <!-- Barra de utilidades (escritorio) -->
+    <div class="utility-bar" aria-label="Barra de utilidades">
+      <div class="utility-bar__inner">
+        <a href="#" class="utility-link">
+          <span aria-hidden="true">📍</span>
+          <span>Cerrar oferta en tienda</span>
+        </a>
+        <a href="#" class="utility-link"><span>Servicios</span></a>
+        <a href="#" class="utility-link"><span>Bolsa de regalo</span></a>
+
+        <nav aria-label="Acciones de usuario">
+          <ul class="utility-nav" role="list">
+
+            <!-- Personalización (dark mode / font size) -->
+            <li>
+              <button type="button" class="utility-btn"
+                aria-label="Abrir panel de personalización"
+                aria-expanded="false"
+                aria-controls="personalization-panel"
+                data-action="open-personalization">
+                <span aria-hidden="true">⚙️</span>
+                <span class="sr-only">Personalización</span>
+              </button>
+            </li>
+
+            <!-- FEATURE 1 · Iniciar sesión -->
+            <li>
+              <button type="button" class="utility-btn utility-btn--login"
+                aria-label="Abrir ventana de inicio de sesión"
+                aria-haspopup="dialog"
+                aria-controls="login-dialog"
+                data-action="open-login">
+                <span aria-hidden="true">👤</span>
+                <span class="utility-btn__label">Iniciar sesión</span>
+              </button>
+            </li>
+
+            <!-- Bolsa (abre sidebar cart O va a bolsa.html) -->
+            <li>
+              <button type="button"
+                class="utility-btn cart-icon"
+                aria-label="Abrir carrito lateral — 3 artículos"
+                aria-haspopup="dialog"
+                aria-controls="sidebar-cart"
+                aria-expanded="false"
+                data-action="open-sidebar-cart">
+                <span aria-hidden="true">🛍️</span>
+                <span class="cart-badge"
+                  id="header-cart-count"
+                  aria-label="3 artículos en la bolsa"
+                  aria-live="polite">3</span>
+                <span class="sr-only">Mi bolsa</span>
+              </button>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+    </div><!-- /utility-bar -->
+
+    <!-- Fila principal: logo + buscador + hamburguesa -->
+    <div class="header-main">
+
+      <!-- Logo -->
+      <a href="index.html" class="site-logo"
+        aria-label="Liverpool — Ir a la página de inicio">
+        <img src="assets/images/liverpool-logo.svg" alt="Liverpool"
+          width="120" height="40"
+          class="site-logo__img" loading="eager" />
+      </a>
+
+      <!-- Buscador -->
+      <search class="site-search" aria-label="Búsqueda de productos">
+        <form action="#" method="get" role="search" class="search-form">
+          <label for="search-input" class="sr-only">Buscar productos</label>
+          <input type="search" id="search-input" name="q"
+            class="search-form__input"
+            placeholder="¿Qué estás buscando?"
+            autocomplete="off"
+            aria-label="Buscar productos en Liverpool"
+            minlength="2" />
+          <button type="submit" class="search-form__btn" aria-label="Buscar">
+            <span aria-hidden="true">🔍</span>
+          </button>
+        </form>
+      </search>
+
+      <!-- FEATURE 6 · Botón hamburguesa (móvil) -->
+      <button
+        type="button"
+        id="hamburger-btn"
+        class="mobile-menu-toggle"
+        aria-label="Abrir menú de navegación principal"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        data-action="toggle-nav"
+      >
+        <!-- Tres líneas → icono de hamburguesa accesible -->
+        <span class="hamburger-icon" aria-hidden="true">
+          <span class="hamburger-icon__bar"></span>
+          <span class="hamburger-icon__bar"></span>
+          <span class="hamburger-icon__bar"></span>
+        </span>
+      </button>
+
+    </div><!-- /header-main -->
+
+    <!-- ── FEATURE 6 · NAVEGACIÓN PRINCIPAL (oculta en móvil por defecto) ── -->
+    <!--
+      En móvil: hidden por defecto, el botón hamburguesa la revela.
+      En escritorio: siempre visible mediante CSS (display:flex).
+      aria-expanded en el botón se actualiza con JS al abrir/cerrar.
+    -->
+    <nav id="primary-nav" class="primary-nav"
+      aria-label="Menú principal" hidden>
+
+      <ul class="primary-nav__list" role="list">
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-mujeres">
+            Mujeres <span aria-hidden="true">▾</span>
+          </button>
+          <ul id="submenu-mujeres" class="submenu" role="list"
+            aria-label="Subcategorías de Mujeres" hidden>
+            <li><a href="#" class="submenu__link">Ropa</a></li>
+            <li><a href="#" class="submenu__link">Calzado</a></li>
+            <li><a href="#" class="submenu__link">Accesorios</a></li>
+            <li><a href="#" class="submenu__link">Bolsas</a></li>
+          </ul>
+        </li>
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-hombres">
+            Hombres <span aria-hidden="true">▾</span>
+          </button>
+          <ul id="submenu-hombres" class="submenu" role="list"
+            aria-label="Subcategorías de Hombres" hidden>
+            <li><a href="#" class="submenu__link">Ropa</a></li>
+            <li><a href="#" class="submenu__link">Calzado</a></li>
+            <li><a href="#" class="submenu__link">Deportes</a></li>
+          </ul>
+        </li>
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-ninos">
+            Niños <span aria-hidden="true">▾</span>
+          </button>
+          <ul id="submenu-ninos" class="submenu" role="list"
+            aria-label="Subcategorías de Niños" hidden>
+            <li><a href="#" class="submenu__link">Ropa</a></li>
+            <li><a href="#" class="submenu__link">Juguetes</a></li>
+            <li><a href="#" class="submenu__link">Calzado</a></li>
+          </ul>
+        </li>
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-tecnologia">
+            Tecnología <span aria-hidden="true">▾</span>
+          </button>
+          <ul id="submenu-tecnologia" class="submenu" role="list"
+            aria-label="Subcategorías de Tecnología" hidden>
+            <li><a href="#" class="submenu__link">Celulares</a></li>
+            <li><a href="#" class="submenu__link">Laptops</a></li>
+            <li><a href="#" class="submenu__link">Audio</a></li>
+            <li><a href="#" class="submenu__link">Tablets</a></li>
+          </ul>
+        </li>
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-hogar">
+            Hogar <span aria-hidden="true">▾</span>
+          </button>
+          <ul id="submenu-hogar" class="submenu" role="list"
+            aria-label="Subcategorías de Hogar" hidden>
+            <li><a href="#" class="submenu__link">Sala</a></li>
+            <li><a href="#" class="submenu__link">Cocina</a></li>
+            <li><a href="#" class="submenu__link">Recámara</a></li>
+            <li><a href="#" class="submenu__link">Decoración</a></li>
+          </ul>
+        </li>
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-deportes">
+            Deportes <span aria-hidden="true">▾</span>
+          </button>
+          <ul id="submenu-deportes" class="submenu" role="list"
+            aria-label="Subcategorías de Deportes" hidden>
+            <li><a href="#" class="submenu__link">Fútbol</a></li>
+            <li><a href="#" class="submenu__link">Running</a></li>
+            <li><a href="#" class="submenu__link">Fitness</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item">
+          <a href="jerseys.html" class="primary-nav__link">Jerseys del Mundial</a>
+        </li>
+        <li class="primary-nav__item">
+          <a href="mexico.html" class="primary-nav__link">Selección México</a>
+        </li>
+        <li class="primary-nav__item">
+          <a href="juguetes.html" class="primary-nav__link primary-nav__link--highlight primary-nav__link--active" aria-current="page">Ofertas</a>
+        </li>
+
+      </ul>
+
+      <!-- Cierre del menú (sólo visible en móvil como X) -->
+      <button type="button"
+        class="primary-nav__close"
+        aria-label="Cerrar menú de navegación"
+        aria-controls="primary-nav"
+        data-action="close-nav">✕ Cerrar</button>
+
+    </nav><!-- /primary-nav -->
+
+  </header><!-- /site-header -->
+
+  <!-- ═══════════════ JUGUETES / OFERTAS ═══════════════ -->
+  <main id="main-content" class="site-main" tabindex="-1">
+
+    <nav aria-label="Ruta de navegación" class="breadcrumb">
+      <ol class="breadcrumb__list" role="list">
+        <li class="breadcrumb__item"><a href="index.html" class="breadcrumb__link">Inicio</a></li>
+        <li class="breadcrumb__item" aria-hidden="true">›</li>
+        <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">Ofertas</li>
+      </ol>
+    </nav>
+
+    <section id="juguetes" class="section-juguetes"
+      aria-labelledby="juguetes-heading">
+
+      <header class="section-header">
+        <h1 id="juguetes-heading" class="section-title">
+          <span aria-hidden="true">🧸</span> Ofertas
+        </h1>
+      </header>
+
+      <div class="filter-bar" role="group" aria-label="Filtrar y ordenar ofertas">
+        <button type="button" class="btn btn--filter" aria-pressed="true">Todos</button>
+        <button type="button" class="btn btn--filter" aria-pressed="false">Juguetes</button>
+        <button type="button" class="btn btn--filter" aria-pressed="false">Tecnología</button>
+        <button type="button" class="btn btn--filter" aria-pressed="false">Ropa</button>
+        <label for="sort-juguetes" class="sr-only">Ordenar por</label>
+        <select id="sort-juguetes" class="sort-select" aria-label="Ordenar ofertas">
+          <option value="relevance">Más relevantes</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="discount">Mayor descuento</option>
+        </select>
+      </div>
+
+      <p class="results-count" aria-live="polite" aria-atomic="true">
+        Mostrando <strong>8</strong> resultados
+      </p>
+
+      <ul class="product-grid" role="list" aria-label="Cuadrícula de ofertas">
+        <li class="product-card" role="listitem">
+          <article aria-label="Samsung Galaxy Tab S10 FE 10.9 Pulgadas — SAMSUNG">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Samsung Galaxy Tab S10 FE 10.9 Pulgadas">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/samsung-galaxy-tab.jpg"
+                    alt="Tablet Samsung Galaxy Tab S10 FE de 10.9 pulgadas, color azul"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+              <span class="product-badge product-badge--offer" aria-label="OFERTA">OFERTA</span>
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Samsung Galaxy Tab S10 FE 10.9 Pulgadas">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Samsung Galaxy Tab S10 FE 10.9 Pulgadas"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/samsung-galaxy-tab.jpg">
+                  <img src="assets/images/juguetes/samsung-galaxy-tab.jpg" alt="Vista lateral — Samsung Galaxy Tab S10 FE 10.9 Pulgadas"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Samsung Galaxy Tab S10 FE 10.9 Pulgadas"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/samsung-galaxy-tab.jpg">
+                  <img src="assets/images/juguetes/samsung-galaxy-tab.jpg" alt="Detalle — Samsung Galaxy Tab S10 FE 10.9 Pulgadas"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">SAMSUNG</span>
+              <h2 class="product-card__name">Samsung Galaxy Tab S10 FE 10.9 Pulgadas</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$2,949 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Samsung Galaxy Tab S10 FE 10.9 Pulgadas en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Samsung Galaxy Tab S10 FE 10.9 Pulgadas a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="samsung-galaxy-tab-s10-fe"
+                data-product-name="Samsung Galaxy Tab S10 FE 10.9 Pulgadas"
+                data-product-price="$2,949 MXN"
+                data-product-img="assets/images/juguetes/samsung-galaxy-tab.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="Juguete Toy Story Dino Capa de Héroe — DISNEY">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Juguete Toy Story Dino Capa de Héroe">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/disney-toy-story-dino.jpg"
+                    alt="Juguete Disney Toy Story, dinosaurio Dino con capa de héroe, colores azul y rojo"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+              <span class="product-badge product-badge--disney" aria-label="DISNEY">DISNEY</span>
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Juguete Toy Story Dino Capa de Héroe">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Juguete Toy Story Dino Capa de Héroe"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/disney-toy-story-dino.jpg">
+                  <img src="assets/images/juguetes/disney-toy-story-dino.jpg" alt="Vista lateral — Juguete Toy Story Dino Capa de Héroe"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Juguete Toy Story Dino Capa de Héroe"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/disney-toy-story-dino.jpg">
+                  <img src="assets/images/juguetes/disney-toy-story-dino.jpg" alt="Detalle — Juguete Toy Story Dino Capa de Héroe"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">DISNEY</span>
+              <h2 class="product-card__name">Juguete Toy Story Dino Capa de Héroe</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 5 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★★</span>
+                <span class="rating-value">5</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$4,249 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Juguete Toy Story Dino Capa de Héroe en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Juguete Toy Story Dino Capa de Héroe a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="disney-toy-story-dino-capa"
+                data-product-name="Juguete Toy Story Dino Capa de Héroe"
+                data-product-price="$4,249 MXN"
+                data-product-img="assets/images/juguetes/disney-toy-story-dino.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="Sudadera Avengers con Capucha — MARVEL">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Sudadera Avengers con Capucha">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/sudadera-marvel-avengers.jpg"
+                    alt="Sudadera Marvel Avengers con capucha, color negro con logo de Los Vengadores"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Sudadera Avengers con Capucha">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Sudadera Avengers con Capucha"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/sudadera-marvel-avengers.jpg">
+                  <img src="assets/images/juguetes/sudadera-marvel-avengers.jpg" alt="Vista lateral — Sudadera Avengers con Capucha"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Sudadera Avengers con Capucha"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/sudadera-marvel-avengers.jpg">
+                  <img src="assets/images/juguetes/sudadera-marvel-avengers.jpg" alt="Detalle — Sudadera Avengers con Capucha"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">MARVEL</span>
+              <h2 class="product-card__name">Sudadera Avengers con Capucha</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$1,599 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Sudadera Avengers con Capucha en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Sudadera Avengers con Capucha a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="sudadera-marvel-avengers"
+                data-product-name="Sudadera Avengers con Capucha"
+                data-product-price="$1,599 MXN"
+                data-product-img="assets/images/juguetes/sudadera-marvel-avengers.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="Auto de Juguete Escala 1:18 — MATTEL">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Auto de Juguete Escala 1:18">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/auto-mattel.jpg"
+                    alt="Auto de juguete Mattel, color amarillo brillante, escala 1:18, con puertas que se abren"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Auto de Juguete Escala 1:18">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Auto de Juguete Escala 1:18"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/auto-mattel.jpg">
+                  <img src="assets/images/juguetes/auto-mattel.jpg" alt="Vista lateral — Auto de Juguete Escala 1:18"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Auto de Juguete Escala 1:18"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/auto-mattel.jpg">
+                  <img src="assets/images/juguetes/auto-mattel.jpg" alt="Detalle — Auto de Juguete Escala 1:18"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">MATTEL</span>
+              <h2 class="product-card__name">Auto de Juguete Escala 1:18</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 5 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★★</span>
+                <span class="rating-value">5</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$1,599 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Auto de Juguete Escala 1:18 en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Auto de Juguete Escala 1:18 a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="auto-mattel-amarillo"
+                data-product-name="Auto de Juguete Escala 1:18"
+                data-product-price="$1,599 MXN"
+                data-product-img="assets/images/juguetes/auto-mattel.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="Samsung Galaxy Tab S10 Plus 12.4 Pulgadas — SAMSUNG">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Samsung Galaxy Tab S10 Plus 12.4 Pulgadas">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/samsung-galaxy-tab.jpg"
+                    alt="Tablet Samsung Galaxy Tab S10 Plus de 12.4 pulgadas, color grafito"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+              <span class="product-badge product-badge--offer" aria-label="OFERTA">OFERTA</span>
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Samsung Galaxy Tab S10 Plus 12.4 Pulgadas">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Samsung Galaxy Tab S10 Plus 12.4 Pulgadas"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/samsung-galaxy-tab.jpg">
+                  <img src="assets/images/juguetes/samsung-galaxy-tab.jpg" alt="Vista lateral — Samsung Galaxy Tab S10 Plus 12.4 Pulgadas"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Samsung Galaxy Tab S10 Plus 12.4 Pulgadas"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/samsung-galaxy-tab.jpg">
+                  <img src="assets/images/juguetes/samsung-galaxy-tab.jpg" alt="Detalle — Samsung Galaxy Tab S10 Plus 12.4 Pulgadas"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">SAMSUNG</span>
+              <h2 class="product-card__name">Samsung Galaxy Tab S10 Plus 12.4 Pulgadas</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 5 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★★</span>
+                <span class="rating-value">5</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$3,799 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Samsung Galaxy Tab S10 Plus 12.4 Pulgadas en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Samsung Galaxy Tab S10 Plus 12.4 Pulgadas a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="samsung-galaxy-tab-s10-plus"
+                data-product-name="Samsung Galaxy Tab S10 Plus 12.4 Pulgadas"
+                data-product-price="$3,799 MXN"
+                data-product-img="assets/images/juguetes/samsung-galaxy-tab.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="Sudadera Marvel Los Vengadores — NEW ERA">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Sudadera Marvel Los Vengadores">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/sudadera-marvel-avengers.jpg"
+                    alt="Sudadera New Era Marvel Los Vengadores, color rojo con gráfico del grupo"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Sudadera Marvel Los Vengadores">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Sudadera Marvel Los Vengadores"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/sudadera-marvel-avengers.jpg">
+                  <img src="assets/images/juguetes/sudadera-marvel-avengers.jpg" alt="Vista lateral — Sudadera Marvel Los Vengadores"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Sudadera Marvel Los Vengadores"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/sudadera-marvel-avengers.jpg">
+                  <img src="assets/images/juguetes/sudadera-marvel-avengers.jpg" alt="Detalle — Sudadera Marvel Los Vengadores"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">NEW ERA</span>
+              <h2 class="product-card__name">Sudadera Marvel Los Vengadores</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$2,499 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Sudadera Marvel Los Vengadores en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Sudadera Marvel Los Vengadores a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="new-era-marvel-avengers"
+                data-product-name="Sudadera Marvel Los Vengadores"
+                data-product-price="$2,499 MXN"
+                data-product-img="assets/images/juguetes/sudadera-marvel-avengers.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="La Toy The Story Capa del Héroe — DISNEY">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de La Toy The Story Capa del Héroe">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/disney-toy-story-dino.jpg"
+                    alt="Juguete La Toy The Story Capa de Héroe con figura de acción articulada"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+              <span class="product-badge product-badge--disney" aria-label="DISNEY">DISNEY</span>
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de La Toy The Story Capa del Héroe">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de La Toy The Story Capa del Héroe"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/disney-toy-story-dino.jpg">
+                  <img src="assets/images/juguetes/disney-toy-story-dino.jpg" alt="Vista lateral — La Toy The Story Capa del Héroe"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de La Toy The Story Capa del Héroe"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/disney-toy-story-dino.jpg">
+                  <img src="assets/images/juguetes/disney-toy-story-dino.jpg" alt="Detalle — La Toy The Story Capa del Héroe"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">DISNEY</span>
+              <h2 class="product-card__name">La Toy The Story Capa del Héroe</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$899 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar La Toy The Story Capa del Héroe en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar La Toy The Story Capa del Héroe a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="disney-la-toy-capa-heroe"
+                data-product-name="La Toy The Story Capa del Héroe"
+                data-product-price="$899 MXN"
+                data-product-img="assets/images/juguetes/disney-toy-story-dino.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+        <li class="product-card" role="listitem">
+          <article aria-label="Auto Deportivo Escala 1:24 — MATTEL">
+
+            <!-- FEATURE 4 · Mini galería de la tarjeta -->
+            <div class="product-card__gallery">
+
+              <!-- Imagen principal -->
+              <a href="#" class="product-card__img-link"
+                aria-label="Ver detalle de Auto Deportivo Escala 1:24">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/juguetes/auto-mattel.jpg"
+                    alt="Auto de juguete Mattel, color rojo, escala 1:24, edición especial deportiva"
+                    width="300" height="300"
+                    loading="lazy"
+                    class="product-card__img product-card__img--main"
+                  />
+                </figure>
+              </a>
+
+              <!-- Miniaturas (2 placeholders) -->
+              <div class="product-card__thumbnails"
+                role="list"
+                aria-label="Vistas adicionales de Auto Deportivo Escala 1:24">
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 1 de Auto Deportivo Escala 1:24"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/auto-mattel.jpg">
+                  <img src="assets/images/juguetes/auto-mattel.jpg" alt="Vista lateral — Auto Deportivo Escala 1:24"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+                <button type="button"
+                  class="product-card__thumb"
+                  role="listitem"
+                  aria-label="Vista alternativa 2 de Auto Deportivo Escala 1:24"
+                  data-action="switch-card-img"
+                  data-img="assets/images/juguetes/auto-mattel.jpg">
+                  <img src="assets/images/juguetes/auto-mattel.jpg" alt="Detalle — Auto Deportivo Escala 1:24"
+                    width="60" height="60" loading="lazy" />
+                </button>
+
+              </div><!-- /thumbnails -->
+            </div><!-- /product-card__gallery -->
+
+            <!-- Info textual -->
+            <div class="product-card__info">
+              <span class="product-card__brand">MATTEL</span>
+              <h2 class="product-card__name">Auto Deportivo Escala 1:24</h2>
+
+              <!-- FEATURE 3 · Rating badge -->
+              <div class="product-card__rating"
+                aria-label="Calificación: 4 de 5 estrellas">
+                <span class="rating-stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-value">4</span>
+                <span class="rating-max" aria-hidden="true">/ 5</span>
+              </div>
+
+              <p class="product-card__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$899 MXN</strong>
+              </p>
+            </div>
+
+            <!-- Acciones -->
+            <div class="product-card__actions">
+              <button type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Guardar Auto Deportivo Escala 1:24 en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <!-- FEATURE 5 trigger + FEATURE 7 trigger -->
+              <button type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Auto Deportivo Escala 1:24 a mi bolsa"
+                data-action="add-to-cart"
+                data-product-id="mattel-auto-rojo-1-24"
+                data-product-name="Auto Deportivo Escala 1:24"
+                data-product-price="$899 MXN"
+                data-product-img="assets/images/juguetes/auto-mattel.jpg">
+                + Agregar
+              </button>
+            </div>
+
+          </article>
+        </li>
+      </ul>
+
+      <div class="load-more" aria-live="polite">
+        <button type="button" class="btn btn--secondary btn--wide">
+          Ver más ofertas
+        </button>
+      </div>
+
+    </section>
+
+  </main><!-- /site-main -->
+
+
+  <!-- ══════════════════════════════════════════════════════════════
+       PIE DE PÁGINA
+       ══════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+
+    <section class="footer-newsletter" aria-labelledby="newsletter-heading">
+      <div class="footer-newsletter__inner">
+        <h2 id="newsletter-heading" class="footer-newsletter__title">
+          Suscríbete y recibe ofertas exclusivas
+        </h2>
+        <p class="footer-newsletter__desc">
+          Entérate antes que nadie de nuestras promociones y lanzamientos.
+        </p>
+        <form class="newsletter-form" action="#" method="post"
+          aria-label="Formulario de suscripción al boletín">
+          <div class="newsletter-form__row">
+            <label for="newsletter-email" class="sr-only">
+              Correo electrónico para suscripción
+            </label>
+            <input type="email" id="newsletter-email" name="email"
+              class="newsletter-form__input"
+              placeholder="Tu correo electrónico"
+              autocomplete="email"
+              required aria-required="true"
+              aria-label="Ingresa tu correo electrónico" />
+            <button type="submit" class="btn btn--primary"
+              aria-label="Suscribirse al boletín de Liverpool">
+              Suscribirme
+            </button>
+          </div>
+          <p class="newsletter-form__consent">
+            Al suscribirte aceptas nuestro
+            <a href="#">aviso de privacidad</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <div class="footer-nav-wrapper">
+
+      <nav class="footer-nav" aria-labelledby="fnav-compras">
+        <h3 id="fnav-compras" class="footer-nav__heading">
+          Ayuda con tus compras
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Rastrear mi pedido</a></li>
+          <li><a href="#" class="footer-nav__link">Devoluciones y cambios</a></li>
+          <li><a href="#" class="footer-nav__link">Métodos de pago</a></li>
+          <li><a href="#" class="footer-nav__link">Meses sin intereses</a></li>
+          <li><a href="#" class="footer-nav__link">Información de envíos</a></li>
+          <li><a href="#" class="footer-nav__link">Garantías</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="fnav-cuenta">
+        <h3 id="fnav-cuenta" class="footer-nav__heading">
+          Beneficios Liverpool
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Mi cuenta</a></li>
+          <li><a href="#" class="footer-nav__link">Tarjeta Liverpool</a></li>
+          <li><a href="#" class="footer-nav__link">Programa de recompensas</a></li>
+          <li><a href="#" class="footer-nav__link">Liverpool Plus</a></li>
+          <li><a href="#" class="footer-nav__link">Ofertas exclusivas</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="fnav-empresa">
+        <h3 id="fnav-empresa" class="footer-nav__heading">
+          Sobre Liverpool
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Quiénes somos</a></li>
+          <li><a href="#" class="footer-nav__link">Encuentra una tienda</a></li>
+          <li><a href="#" class="footer-nav__link">Trabaja con nosotros</a></li>
+          <li><a href="#" class="footer-nav__link">Proveedores</a></li>
+          <li><a href="#" class="footer-nav__link">Responsabilidad social</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="fnav-contacto">
+        <h3 id="fnav-contacto" class="footer-nav__heading">Contáctanos</h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Centro de ayuda</a></li>
+          <li>
+            <a href="#" class="footer-nav__link"
+              aria-label="Llamar al 800 800 8888">800 800 8888</a>
+          </li>
+          <li><a href="#" class="footer-nav__link">Chat en línea</a></li>
+          <li><a href="#" class="footer-nav__link">WhatsApp</a></li>
+        </ul>
+      </nav>
+
+    </div><!-- /footer-nav-wrapper -->
+
+    <section class="footer-social" aria-labelledby="social-heading">
+      <h3 id="social-heading" class="footer-social__heading">Síguenos</h3>
+      <ul class="social-links" role="list"
+        aria-label="Redes sociales de Liverpool">
+        <li>
+          <a href="#" class="social-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en Facebook (abre en nueva pestaña)">
+            <img src="assets/icons/facebook.svg" alt="Facebook"
+              width="24" height="24" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a href="#" class="social-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en Instagram (abre en nueva pestaña)">
+            <img src="assets/icons/instagram.svg" alt="Instagram"
+              width="24" height="24" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a href="#" class="social-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en TikTok (abre en nueva pestaña)">
+            <img src="assets/icons/tiktok.svg" alt="TikTok"
+              width="24" height="24" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a href="#" class="social-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en X Twitter (abre en nueva pestaña)">
+            <img src="assets/icons/x-twitter.svg" alt="X (Twitter)"
+              width="24" height="24" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a href="#" class="social-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en YouTube (abre en nueva pestaña)">
+            <img src="assets/icons/youtube.svg" alt="YouTube"
+              width="24" height="24" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="footer-app" aria-labelledby="app-heading">
+      <h3 id="app-heading" class="footer-app__heading">
+        Descarga nuestra app
+      </h3>
+      <ul class="app-links" role="list"
+        aria-label="Descargar aplicación Liverpool">
+        <li>
+          <a href="#" class="app-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Descargar Liverpool en App Store (abre en nueva pestaña)">
+            <img src="assets/icons/app-store-badge.svg"
+              alt="Disponible en App Store"
+              width="135" height="40" loading="lazy" />
+          </a>
+        </li>
+        <li>
+          <a href="#" class="app-link" target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Descargar Liverpool en Google Play (abre en nueva pestaña)">
+            <img src="assets/icons/google-play-badge.svg"
+              alt="Disponible en Google Play"
+              width="135" height="40" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <div class="footer-legal">
+      <p class="footer-legal__copyright">
+        &copy; <time datetime="2026">2026</time> Liverpool.
+        Todos los derechos reservados.
+      </p>
+      <nav aria-label="Avisos legales">
+        <ul class="footer-legal__links" role="list">
+          <li><a href="#" class="footer-legal__link">Términos y condiciones</a></li>
+          <li><a href="#" class="footer-legal__link">Aviso de privacidad</a></li>
+          <li><a href="#" class="footer-legal__link">Política de cookies</a></li>
+          <li><a href="#" class="footer-legal__link">Mapa del sitio</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </footer><!-- /site-footer -->
+
+</body>
+</html>

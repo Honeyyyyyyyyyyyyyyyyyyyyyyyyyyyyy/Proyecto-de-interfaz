@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="styles.css">
+
+  <meta name="description" content="Liverpool – Tu tienda departamental favorita. Moda, tecnología, hogar y más." />
+  <meta name="theme-color" content="#E91E8C" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Liverpool – Compra en línea" />
+  <meta property="og:description" content="Descubre las últimas novedades en moda, tecnología, juguetes y mucho más." />
+  <meta property="og:type" content="website" />
+
+  <title>Liverpool – Compra en Línea | Moda, Tecnología y Más</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="#" />
+
+  <!--
+    ============================================================
+    PHASE 1 — Semantic HTML Structure (No CSS / No JS)
+    Prepared for Mobile-First CSS implementation in Phase 2.
+
+    Sections:
+      1. Skip-navigation link (accessibility)
+      2. Onboarding modal / dialog
+      3. Personalization panel (font size + dark mode)
+      4. Site header (logo, search, primary nav, utility nav)
+      5. Main content
+         5a. Hero banner
+         5b. Novedades
+         5c. Jerseys del Mundial
+         5d. Selección México – product detail
+         5e. Juguetes / Ofertas
+         5f. Trending products
+         5g. Ideas para regalar
+         5h. Mi Bolsa (shopping bag)
+         5i. Mi Cuenta / Dashboard (rewards + profile)
+         5j. Iniciar sesión modal
+      6. Site footer
+    ============================================================
+  -->
+</head>
+
+<body>
+
+  <!-- ============================================================
+       1. SKIP NAVIGATION — WCAG 2.4.1 (Bypass Blocks)
+       ============================================================ -->
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+
+  <!-- ============================================================
+       2. ONBOARDING DIALOG — Step-by-step user guide
+            • Hidden by default (hidden attribute)
+            • Controlled via aria-modal + role="dialog"
+       ============================================================ -->
+  <dialog
+    id="onboarding-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="onboarding-title"
+    aria-describedby="onboarding-description"
+    hidden
+  >
+    <article class="onboarding-wrapper">
+      <header class="onboarding-header">
+        <h2 id="onboarding-title">Bienvenido a Liverpool</h2>
+        <p id="onboarding-description">
+          Te guiaremos en unos sencillos pasos para que aproveches al máximo
+          tu experiencia de compra.
+        </p>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Cerrar guía de bienvenida"
+          data-action="close-onboarding"
+        >✕</button>
+      </header>
+
+      <!-- Step indicator -->
+      <nav aria-label="Pasos de incorporación">
+        <ol class="onboarding-steps" role="list">
+          <li
+            class="step step--active"
+            aria-current="step"
+            data-step="1"
+          >
+            <span class="step__number" aria-hidden="true">1</span>
+            <span class="step__label">Explora</span>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step__number" aria-hidden="true">2</span>
+            <span class="step__label">Agrega</span>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step__number" aria-hidden="true">3</span>
+            <span class="step__label">Compra</span>
+          </li>
+          <li class="step" data-step="4">
+            <span class="step__number" aria-hidden="true">4</span>
+            <span class="step__label">Disfruta</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Step panels -->
+      <section
+        class="onboarding-panel"
+        id="panel-step-1"
+        aria-labelledby="panel-step-1-heading"
+        data-panel="1"
+      >
+        <h3 id="panel-step-1-heading">Paso 1 – Explora nuestro catálogo</h3>
+        <p>
+          Usa la barra de búsqueda o navega por categorías para descubrir
+          miles de productos exclusivos para ti.
+        </p>
+        <figure class="onboarding-illustration" aria-hidden="true">
+          <!-- Placeholder: illustration will be injected via CSS background -->
+          <figcaption>Ilustración: catálogo de productos</figcaption>
+        </figure>
+      </section>
+
+      <section
+        class="onboarding-panel"
+        id="panel-step-2"
+        aria-labelledby="panel-step-2-heading"
+        data-panel="2"
+        hidden
+      >
+        <h3 id="panel-step-2-heading">Paso 2 – Agrega a tu bolsa</h3>
+        <p>
+          Selecciona tu talla, color y cantidad. Luego presiona
+          <strong>"Agregar a mi bolsa"</strong> para guardar tus artículos.
+        </p>
+      </section>
+
+      <section
+        class="onboarding-panel"
+        id="panel-step-3"
+        aria-labelledby="panel-step-3-heading"
+        data-panel="3"
+        hidden
+      >
+        <h3 id="panel-step-3-heading">Paso 3 – Realiza tu compra</h3>
+        <p>
+          Revisa tu bolsa, elige tu método de pago favorito y confirma tu
+          pedido en segundos.
+        </p>
+      </section>
+
+      <section
+        class="onboarding-panel"
+        id="panel-step-4"
+        aria-labelledby="panel-step-4-heading"
+        data-panel="4"
+        hidden
+      >
+        <h3 id="panel-step-4-heading">Paso 4 – Recibe y disfruta</h3>
+        <p>
+          Haz seguimiento de tu pedido en tiempo real y recíbelo en la
+          comodidad de tu hogar.
+        </p>
+      </section>
+
+      <!-- Onboarding navigation -->
+      <footer class="onboarding-footer">
+        <button type="button" class="btn btn--secondary" data-action="prev-step" disabled>
+          Anterior
+        </button>
+        <button type="button" class="btn btn--primary" data-action="next-step">
+          Siguiente
+        </button>
+        <button type="button" class="btn btn--ghost" data-action="skip-onboarding">
+          Omitir guía
+        </button>
+      </footer>
+    </article>
+  </dialog>
+
+
+  <!-- ============================================================
+       3. PERSONALIZATION PANEL
+            • Font size scaling (increase / decrease)
+            • Light / Dark mode toggle
+            • Accessible via aria-expanded from header button
+       ============================================================ -->
+  <aside
+    id="personalization-panel"
+    class="personalization-panel"
+    aria-label="Panel de personalización"
+    aria-hidden="true"
+    hidden
+  >
+    <div class="personalization-panel__inner">
+      <h2 class="personalization-panel__title">Personalización</h2>
+
+      <!-- Font size control -->
+      <section
+        class="personalization-section"
+        aria-labelledby="font-size-heading"
+      >
+        <h3 id="font-size-heading" class="personalization-section__heading">
+          Tamaño de texto
+        </h3>
+        <div class="font-size-controls" role="group" aria-label="Controles de tamaño de texto">
+          <button
+            type="button"
+            class="btn btn--icon"
+            aria-label="Reducir tamaño de texto"
+            data-action="decrease-font"
+          >
+            <span aria-hidden="true">A−</span>
+          </button>
+
+          <output
+            id="font-size-value"
+            class="font-size-value"
+            aria-live="polite"
+            aria-label="Tamaño actual de texto"
+          >
+            100%
+          </output>
+
+          <button
+            type="button"
+            class="btn btn--icon"
+            aria-label="Aumentar tamaño de texto"
+            data-action="increase-font"
+          >
+            <span aria-hidden="true">A+</span>
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn btn--ghost btn--small"
+          data-action="reset-font"
+        >
+          Restablecer
+        </button>
+      </section>
+
+      <!-- Appearance toggle -->
+      <section
+        class="personalization-section"
+        aria-labelledby="appearance-heading"
+      >
+        <h3 id="appearance-heading" class="personalization-section__heading">
+          Apariencia
+        </h3>
+        <div class="appearance-toggle" role="group" aria-label="Modo de apariencia">
+          <button
+            type="button"
+            class="btn btn--appearance btn--appearance-active"
+            aria-pressed="true"
+            data-theme="light"
+            aria-label="Modo claro (activo)"
+          >
+            <span aria-hidden="true">☀️</span>
+            Claro
+          </button>
+          <button
+            type="button"
+            class="btn btn--appearance"
+            aria-pressed="false"
+            data-theme="dark"
+            aria-label="Modo oscuro"
+          >
+            <span aria-hidden="true">🌙</span>
+            Oscuro
+          </button>
+        </div>
+      </section>
+
+      <button
+        type="button"
+        class="btn btn--close personalization-panel__close"
+        aria-label="Cerrar panel de personalización"
+        data-action="close-personalization"
+      >
+        ✕ Cerrar
+      </button>
+    </div>
+  </aside>
+
+
+  <!-- ============================================================
+       4. SITE HEADER
+       ============================================================ -->
+  <header class="site-header" role="banner">
+
+    <!-- Utility bar (top row on desktop) -->
+    <div class="utility-bar" aria-label="Barra de utilidades">
+      <div class="utility-bar__inner">
+        <!-- Store locator -->
+        <a href="#" class="utility-link">
+          <span aria-hidden="true">📍</span>
+          <span>Cerrar oferta en tienda</span>
+        </a>
+
+        <!-- Servicios -->
+        <a href="#" class="utility-link">
+          <span>Servicios</span>
+        </a>
+
+        <!-- Bolsa de regalo -->
+        <a href="#" class="utility-link">
+          <span>Bolsa de regalo</span>
+        </a>
+
+        <!-- User actions -->
+        <nav aria-label="Acciones de usuario">
+          <ul class="utility-nav" role="list">
+            <li>
+              <!-- Personalization trigger -->
+              <button
+                type="button"
+                class="utility-btn"
+                aria-label="Abrir panel de personalización"
+                aria-expanded="false"
+                aria-controls="personalization-panel"
+                data-action="open-personalization"
+              >
+                <span aria-hidden="true">⚙️</span>
+                <span class="sr-only">Personalización</span>
+              </button>
+            </li>
+            <li>
+              <a href="#" class="utility-btn" aria-label="Mi cuenta">
+                <span aria-hidden="true">👤</span>
+                <span class="sr-only">Mi cuenta</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#shopping-bag"
+                class="utility-btn cart-icon"
+                aria-label="Mi bolsa, 3 artículos"
+              >
+                <span aria-hidden="true">🛍️</span>
+                <span class="cart-badge" aria-hidden="true">3</span>
+                <span class="sr-only">Mi bolsa</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Main header row: logo + search -->
+    <div class="header-main">
+      <!-- Logo -->
+      <a href="#inicio" class="site-logo" aria-label="Liverpool – Ir a la página de inicio">
+        <img
+          src="assets/images/liverpool-logo.svg"
+          alt="Liverpool"
+          width="120"
+          height="40"
+          class="site-logo__img"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Search bar -->
+      <search class="site-search" aria-label="Búsqueda de productos">
+        <form
+          action="/buscar"
+          method="get"
+          role="search"
+          class="search-form"
+        >
+          <label for="search-input" class="sr-only">Buscar productos</label>
+          <input
+            type="search"
+            id="search-input"
+            name="q"
+            class="search-form__input"
+            placeholder="¿Qué estás buscando?"
+            autocomplete="off"
+            aria-label="Buscar productos en Liverpool"
+            minlength="2"
+          />
+          <button
+            type="submit"
+            class="search-form__btn"
+            aria-label="Buscar"
+          >
+            <span aria-hidden="true">🔍</span>
+          </button>
+        </form>
+      </search>
+
+      <!-- Mobile menu toggle -->
+      <button
+        type="button"
+        class="mobile-menu-toggle"
+        aria-label="Abrir menú de navegación"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        data-action="toggle-menu"
+      >
+        <span class="hamburger-icon" aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+    <!-- ── PRIMARY NAVIGATION ── -->
+    <nav
+      id="primary-nav"
+      class="primary-nav"
+      aria-label="Menú principal"
+      hidden
+    >
+      <ul class="primary-nav__list" role="list">
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button
+            type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-mujeres"
+          >
+            Mujeres
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul
+            id="submenu-mujeres"
+            class="submenu"
+            role="list"
+            aria-label="Subcategorías de Mujeres"
+            hidden
+          >
+            <li><a href="#" class="submenu__link">Ropa</a></li>
+            <li><a href="#" class="submenu__link">Calzado</a></li>
+            <li><a href="#" class="submenu__link">Accesorios</a></li>
+            <li><a href="#" class="submenu__link">Bolsas</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button
+            type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-hombres"
+          >
+            Hombres
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul
+            id="submenu-hombres"
+            class="submenu"
+            role="list"
+            aria-label="Subcategorías de Hombres"
+            hidden
+          >
+            <li><a href="#" class="submenu__link">Ropa</a></li>
+            <li><a href="#" class="submenu__link">Calzado</a></li>
+            <li><a href="#" class="submenu__link">Deportes</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button
+            type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-ninos"
+          >
+            Niños
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul
+            id="submenu-ninos"
+            class="submenu"
+            role="list"
+            aria-label="Subcategorías de Niños"
+            hidden
+          >
+            <li><a href="#" class="submenu__link">Ropa</a></li>
+            <li><a href="#" class="submenu__link">Juguetes</a></li>
+            <li><a href="#" class="submenu__link">Calzado</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button
+            type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-tecnologia"
+          >
+            Tecnología
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul
+            id="submenu-tecnologia"
+            class="submenu"
+            role="list"
+            aria-label="Subcategorías de Tecnología"
+            hidden
+          >
+            <li><a href="#" class="submenu__link">Celulares</a></li>
+            <li><a href="#" class="submenu__link">Laptops</a></li>
+            <li><a href="#" class="submenu__link">Audio</a></li>
+            <li><a href="#" class="submenu__link">Tablets</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button
+            type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-hogar"
+          >
+            Hogar
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul
+            id="submenu-hogar"
+            class="submenu"
+            role="list"
+            aria-label="Subcategorías de Hogar"
+            hidden
+          >
+            <li><a href="#" class="submenu__link">Sala</a></li>
+            <li><a href="#" class="submenu__link">Cocina</a></li>
+            <li><a href="#" class="submenu__link">Recámara</a></li>
+            <li><a href="#" class="submenu__link">Decoración</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item primary-nav__item--has-submenu">
+          <button
+            type="button"
+            class="primary-nav__link primary-nav__link--toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="submenu-deportes"
+          >
+            Deportes
+            <span aria-hidden="true">▾</span>
+          </button>
+          <ul
+            id="submenu-deportes"
+            class="submenu"
+            role="list"
+            aria-label="Subcategorías de Deportes"
+            hidden
+          >
+            <li><a href="#" class="submenu__link">Fútbol</a></li>
+            <li><a href="#" class="submenu__link">Running</a></li>
+            <li><a href="#" class="submenu__link">Fitness</a></li>
+          </ul>
+        </li>
+
+        <li class="primary-nav__item">
+          <a href="#juguetes" class="primary-nav__link primary-nav__link--highlight">
+            Ofertas
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Breadcrumb (shown on inner pages) -->
+    <nav aria-label="Ruta de navegación" class="breadcrumb">
+      <ol class="breadcrumb__list" role="list">
+        <li class="breadcrumb__item">
+          <a href="#inicio" class="breadcrumb__link">Inicio</a>
+        </li>
+        <li class="breadcrumb__item" aria-hidden="true">›</li>
+        <li class="breadcrumb__item">
+          <a href="#" class="breadcrumb__link">Deportes</a>
+        </li>
+        <li class="breadcrumb__item" aria-hidden="true">›</li>
+        <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">
+          Jerseys del Mundial
+        </li>
+      </ol>
+    </nav>
+
+  </header><!-- /site-header -->
+
+
+  <!-- ============================================================
+       5. MAIN CONTENT
+       ============================================================ -->
+  <main id="main-content" class="site-main" tabindex="-1">
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5a. HERO BANNER
+         ────────────────────────────────────────────────────────── -->
+    <section
+      id="inicio"
+      class="hero-banner"
+      aria-label="Promoción principal: Nintendo Switch 2"
+    >
+      <div class="hero-banner__content">
+        <h1 class="hero-banner__title">
+          Compra las<br />últimas novedades
+        </h1>
+        <p class="hero-banner__subtitle">
+          Echa un vistazo a las consolas y videojuegos más esperados.
+        </p>
+        <a
+          href="#"
+          class="btn btn--primary btn--large"
+        >
+          Ir a la tienda
+        </a>
+      </div>
+      <figure class="hero-banner__media">
+        <img
+          src="assets/images/nintendo-switch-2.jpg"
+          alt="Nintendo Switch 2 – nueva consola de Nintendo con controles Joy-Con"
+          width="600"
+          height="400"
+          loading="eager"
+          fetchpriority="high"
+          class="hero-banner__img"
+        />
+      </figure>
+    </section>
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5b. NOVEDADES
+         ────────────────────────────────────────────────────────── -->
+    <section
+      class="section-novedades"
+      aria-labelledby="novedades-heading"
+    >
+      <header class="section-header">
+        <h2 id="novedades-heading" class="section-title">Novedades</h2>
+        <p class="section-subtitle">
+          Echa un vistazo a los nuevos lanzamientos del mundo aquí.
+        </p>
+      </header>
+
+      <div class="novedades-grid" role="list">
+
+        <!-- Card: Jersey femenino México -->
+        <article
+          class="novedad-card"
+          role="listitem"
+          aria-label="Jersey femenino de la Selección Mexicana"
+        >
+          <a href="#" class="novedad-card__link">
+            <figure class="novedad-card__figure">
+              <img
+                src="assets/images/novedades/jersey-femenino-mexico.jpg"
+                alt="Mujeres con el jersey rosa de la Selección Mexicana de Fútbol Femenil"
+                width="400"
+                height="300"
+                loading="lazy"
+                class="novedad-card__img"
+              />
+              <figcaption class="novedad-card__caption">
+                Jersey Femenil México
+              </figcaption>
+            </figure>
+          </a>
+          <button
+            type="button"
+            class="btn btn--icon btn--arrow"
+            aria-label="Ver más sobre Jersey Femenil México"
+          >
+            →
+          </button>
+        </article>
+
+        <!-- Card: Balón oficial -->
+        <article
+          class="novedad-card"
+          role="listitem"
+          aria-label="Balón oficial de fútbol para el Mundial"
+        >
+          <a href="#" class="novedad-card__link">
+            <figure class="novedad-card__figure">
+              <img
+                src="assets/images/novedades/balon-mundial.jpg"
+                alt="Balón oficial Adidas para el Mundial 2026, verde y blanco con detalles en negro"
+                width="400"
+                height="300"
+                loading="lazy"
+                class="novedad-card__img"
+              />
+              <figcaption class="novedad-card__caption">
+                Balón Oficial Mundial 2026
+              </figcaption>
+            </figure>
+          </a>
+          <button
+            type="button"
+            class="btn btn--icon btn--arrow"
+            aria-label="Ver más sobre Balón Oficial Mundial 2026"
+          >
+            →
+          </button>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5c. JERSEYS DEL MUNDIAL — Product Grid
+         ────────────────────────────────────────────────────────── -->
+    <section
+      id="jerseys"
+      class="section-jerseys"
+      aria-labelledby="jerseys-heading"
+    >
+      <header class="section-header">
+        <h2 id="jerseys-heading" class="section-title">
+          <span aria-hidden="true">🏅</span>
+          Jerseys del Mundial
+        </h2>
+        <a href="#jerseys" class="section-link" aria-label="Ver todos los jerseys del Mundial">
+          Ver todos
+        </a>
+      </header>
+
+      <!-- Filter / sort bar -->
+      <div class="filter-bar" role="group" aria-label="Filtrar y ordenar jerseys">
+        <button type="button" class="btn btn--filter" aria-pressed="true">
+          Todos
+        </button>
+        <button type="button" class="btn btn--filter" aria-pressed="false">
+          Local
+        </button>
+        <button type="button" class="btn btn--filter" aria-pressed="false">
+          Visita
+        </button>
+        <button type="button" class="btn btn--filter" aria-pressed="false">
+          Especial
+        </button>
+
+        <label for="sort-jerseys" class="sr-only">Ordenar por</label>
+        <select id="sort-jerseys" class="sort-select" aria-label="Ordenar jerseys">
+          <option value="relevance">Más relevantes</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="newest">Más nuevos</option>
+        </select>
+      </div>
+
+      <!-- Results count -->
+      <p class="results-count" aria-live="polite" aria-atomic="true">
+        Mostrando <strong>12</strong> resultados
+      </p>
+
+      <!-- Product grid -->
+      <ul class="product-grid" role="list" aria-label="Cuadrícula de jerseys">
+
+        <!-- Product card template (repeated) -->
+
+        <!-- 1 -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Jersey Selección Nacional de México Local Blanco – MLG">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/jerseys/jersey-mexico-local-blanco.jpg"
+                  alt="Jersey de la Selección Nacional de México, color blanco, versión local, marca MLG"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">MLG</span>
+                <h3 class="product-card__name">
+                  Jersey Selección Nacional de México Local Blanco
+                </h3>
+                <p class="product-card__price">
+                  <span class="sr-only">Precio:</span>
+                  <strong>$1,299 MXN</strong>
+                </p>
+                <div class="product-card__rating" aria-label="Calificación: 4 de 5 estrellas">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button
+                type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Agregar Jersey Local Blanco MLG a mi lista de deseos"
+              >
+                ♡ Guardar
+              </button>
+              <button
+                type="button"
+                class="btn btn--primary btn--small"
+                aria-label="Agregar Jersey Local Blanco MLG a mi bolsa"
+                data-product-id="jersey-mexico-local-blanco-mlg"
+              >
+                Agregar
+              </button>
+            </div>
+          </article>
+        </li>
+
+        <!-- 2 -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Jersey Selección Nacional de México Rosa – Mundial Adidas">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/jerseys/jersey-mexico-rosa-adidas.jpg"
+                  alt="Jersey rosa de la Selección Nacional de México, edición Mundial, marca Adidas"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">MUNDIAL ADIDAS</span>
+                <h3 class="product-card__name">
+                  Jersey Selección Nacional de México Rosa
+                </h3>
+                <p class="product-card__price">
+                  <strong>$1,299 MXN</strong>
+                </p>
+                <div class="product-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar Jersey Rosa Adidas en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar Jersey Rosa Adidas a mi bolsa"
+                data-product-id="jersey-mexico-rosa-mundial-adidas">
+                Agregar
+              </button>
+            </div>
+          </article>
+        </li>
+
+        <!-- 3 -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Jersey Selección Nacional de México Verde – MLG">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/jerseys/jersey-mexico-verde-mlg.jpg"
+                  alt="Jersey verde de la Selección Nacional de México, versión local, marca MLG"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">MLG</span>
+                <h3 class="product-card__name">
+                  Jersey Selección Nacional de México Verde
+                </h3>
+                <p class="product-card__price">
+                  <strong>$1,299 MXN</strong>
+                </p>
+                <div class="product-card__rating" aria-label="Calificación: 4 de 5 estrellas">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar Jersey Verde MLG en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar Jersey Verde MLG a mi bolsa"
+                data-product-id="jersey-mexico-verde-mlg">
+                Agregar
+              </button>
+            </div>
+          </article>
+        </li>
+
+        <!-- 4 -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Jersey Selección Manga Larga – Adidas">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/jerseys/jersey-mexico-manga-larga.jpg"
+                  alt="Jersey de manga larga de la Selección Mexicana, marca Adidas, color verde oscuro"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">ADIDAS</span>
+                <h3 class="product-card__name">
+                  Jersey de México Manga Larga Con Firma
+                </h3>
+                <p class="product-card__price">
+                  <strong>$1,299 MXN</strong>
+                </p>
+                <div class="product-card__rating" aria-label="Calificación: 3 de 5 estrellas">
+                  <span aria-hidden="true">★★★☆☆</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar Jersey Manga Larga Adidas en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar Jersey Manga Larga Adidas a mi bolsa"
+                data-product-id="jersey-mexico-manga-larga-adidas">
+                Agregar
+              </button>
+            </div>
+          </article>
+        </li>
+
+        <!-- 5 -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Jersey Clásico Rayas de México Para Niño – New Era">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/jerseys/jersey-nino-rayas-new-era.jpg"
+                  alt="Jersey de rayas de la Selección Mexicana para niño, marca New Era, colores verde y blanco"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">NEW ERA</span>
+                <h3 class="product-card__name">
+                  Jersey Clásico Rayas de México Para Niño
+                </h3>
+                <p class="product-card__price">
+                  <strong>$2,499 MXN</strong>
+                </p>
+                <div class="product-card__rating" aria-label="Calificación: 4 de 5 estrellas">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar Jersey Niño New Era en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar Jersey Niño New Era a mi bolsa"
+                data-product-id="jersey-nino-rayas-new-era">
+                Agregar
+              </button>
+            </div>
+          </article>
+        </li>
+
+        <!-- 6 -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Jersey Nacional de México Para Niño Piqué – New Era">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/jerseys/jersey-nino-pique-new-era.jpg"
+                  alt="Jersey nacional de México para niño en tela piqué, marca New Era, color verde con letras blancas"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">NEW ERA</span>
+                <h3 class="product-card__name">
+                  Jersey Nacional de México Para Niño Piqué
+                </h3>
+                <p class="product-card__price">
+                  <strong>$1,299 MXN</strong>
+                </p>
+                <div class="product-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar Jersey Niño Piqué New Era en mi lista de deseos">
+                ♡ Guardar
+              </button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar Jersey Niño Piqué New Era a mi bolsa"
+                data-product-id="jersey-nino-pique-new-era">
+                Agregar
+              </button>
+            </div>
+          </article>
+        </li>
+
+      </ul><!-- /product-grid jerseys -->
+
+      <!-- Load more -->
+      <div class="load-more" aria-live="polite">
+        <button type="button" class="btn btn--secondary btn--wide">
+          Ver más jerseys
+        </button>
+      </div>
+    </section><!-- /section-jerseys -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5d. SELECCIÓN MÉXICO — Product Detail Page
+         ────────────────────────────────────────────────────────── -->
+    <section
+      class="section-product-detail"
+      aria-labelledby="product-detail-heading"
+    >
+      <div class="product-detail">
+        <!-- Product gallery -->
+        <figure class="product-detail__gallery" aria-label="Galería de imágenes del producto">
+          <div class="gallery-main" aria-live="polite" aria-label="Imagen principal del producto">
+            <img
+              src="assets/images/jerseys/jersey-mexico-local-26-jugador.jpg"
+              alt="Jersey Local Selección Nacional de México 26 Versión Jugador, verde con detalles blancos y escudo de México, vista frontal"
+              width="600"
+              height="600"
+              loading="lazy"
+              class="gallery-main__img"
+              id="main-product-image"
+            />
+          </div>
+          <div class="gallery-thumbnails" role="list" aria-label="Miniaturas del producto">
+            <button
+              type="button"
+              class="gallery-thumb gallery-thumb--active"
+              aria-label="Ver imagen frontal del jersey"
+              aria-current="true"
+            >
+              <img
+                src="assets/images/jerseys/jersey-mexico-local-26-jugador-thumb-1.jpg"
+                alt="Vista frontal"
+                width="80"
+                height="80"
+                loading="lazy"
+              />
+            </button>
+            <button
+              type="button"
+              class="gallery-thumb"
+              aria-label="Ver imagen trasera del jersey"
+            >
+              <img
+                src="assets/images/jerseys/jersey-mexico-local-26-jugador-thumb-2.jpg"
+                alt="Vista trasera"
+                width="80"
+                height="80"
+                loading="lazy"
+              />
+            </button>
+            <button
+              type="button"
+              class="gallery-thumb"
+              aria-label="Ver detalle del escudo"
+            >
+              <img
+                src="assets/images/jerseys/jersey-mexico-local-26-jugador-thumb-3.jpg"
+                alt="Detalle del escudo bordado"
+                width="80"
+                height="80"
+                loading="lazy"
+              />
+            </button>
+          </div>
+          <figcaption class="sr-only">
+            Jersey Local Selección Nacional de México 26 Versión Jugador
+          </figcaption>
+        </figure>
+
+        <!-- Product info -->
+        <div class="product-detail__info">
+          <!-- Breadcrumb on mobile (duplicated for context) -->
+          <p class="product-detail__category">Deportes / Jerseys</p>
+
+          <h2 id="product-detail-heading" class="product-detail__name">
+            Jersey Local Selección Nacional de México 26 Versión Jugador
+          </h2>
+
+          <!-- Rating -->
+          <div
+            class="product-detail__rating"
+            aria-label="Calificación del producto: 5 de 5 estrellas, 24 opiniones"
+          >
+            <span class="rating-stars" aria-hidden="true">★★★★★</span>
+            <a href="#product-reviews" class="rating-count">(24 opiniones)</a>
+          </div>
+
+          <!-- Price -->
+          <div class="product-detail__pricing">
+            <p class="product-detail__price">
+              <span class="sr-only">Precio:</span>
+              <strong class="price-current">$2,990 MXN</strong>
+            </p>
+            <p class="product-detail__msi">
+              Desde <strong>$498.33 MXN</strong> con 6 MSI
+              <a href="#" class="link-msi" aria-label="Más información sobre Meses Sin Intereses">
+                Ver opciones
+              </a>
+            </p>
+          </div>
+
+          <!-- Size selector -->
+          <fieldset class="product-detail__sizes">
+            <legend class="product-detail__sizes-legend">
+              Selecciona tu talla
+              <a href="#" class="link-guide" aria-label="Ver guía de tallas">
+                Guía de tallas
+              </a>
+            </legend>
+            <div class="sizes-grid" role="radiogroup" aria-label="Tallas disponibles">
+              <label class="size-option">
+                <input type="radio" name="talla" value="XS" />
+                <span>XS</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="talla" value="S" />
+                <span>S</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="talla" value="M" />
+                <span>M</span>
+              </label>
+              <label class="size-option size-option--default">
+                <input type="radio" name="talla" value="L" checked />
+                <span>L</span>
+              </label>
+              <label class="size-option">
+                <input type="radio" name="talla" value="XL" />
+                <span>XL</span>
+              </label>
+              <label class="size-option size-option--disabled" aria-disabled="true">
+                <input type="radio" name="talla" value="XXL" disabled />
+                <span>XXL</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- Quantity -->
+          <div class="product-detail__quantity">
+            <label for="qty-detail" class="quantity-label">Cantidad:</label>
+            <div class="quantity-stepper" role="group" aria-label="Control de cantidad">
+              <button
+                type="button"
+                class="btn btn--qty"
+                aria-label="Disminuir cantidad"
+                data-action="decrease-qty"
+              >−</button>
+              <input
+                type="number"
+                id="qty-detail"
+                class="qty-input"
+                value="1"
+                min="1"
+                max="10"
+                aria-label="Cantidad"
+              />
+              <button
+                type="button"
+                class="btn btn--qty"
+                aria-label="Aumentar cantidad"
+                data-action="increase-qty"
+              >+</button>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="product-detail__ctas">
+            <button
+              type="button"
+              class="btn btn--primary btn--wide"
+              aria-label="Agregar Jersey México 26 a mi bolsa"
+              data-product-id="jersey-mexico-local-26-jugador"
+            >
+              Agregar a mi bolsa
+            </button>
+            <button
+              type="button"
+              class="btn btn--secondary btn--wide"
+              aria-label="Guardar Jersey México 26 en mi lista de deseos"
+            >
+              ♡ Guardar en favoritos
+            </button>
+          </div>
+
+          <!-- Delivery info -->
+          <aside class="delivery-info" aria-label="Información de envío y entrega">
+            <ul class="delivery-info__list" role="list">
+              <li class="delivery-info__item">
+                <span aria-hidden="true">🚚</span>
+                Envío gratis en compras mayores a $999 MXN
+              </li>
+              <li class="delivery-info__item">
+                <span aria-hidden="true">📦</span>
+                Entrega estimada: 3 – 5 días hábiles
+              </li>
+              <li class="delivery-info__item">
+                <span aria-hidden="true">🔄</span>
+                Devoluciones gratuitas hasta 30 días
+              </li>
+            </ul>
+          </aside>
+        </div><!-- /product-detail__info -->
+      </div><!-- /product-detail -->
+
+      <!-- Related products -->
+      <section
+        class="related-products"
+        aria-labelledby="related-heading"
+      >
+        <h3 id="related-heading" class="related-products__title">
+          Productos relacionados
+        </h3>
+        <ul class="product-grid product-grid--compact" role="list" aria-label="Productos relacionados">
+
+          <li class="product-card product-card--small" role="listitem">
+            <article aria-label="Jersey Local Blanco MLG – relacionado">
+              <a href="#" class="product-card__link">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/jerseys/jersey-mexico-local-blanco.jpg"
+                    alt="Jersey Local Blanco de México, MLG, color blanco con escudo verde"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    class="product-card__img"
+                  />
+                </figure>
+                <div class="product-card__info">
+                  <span class="product-card__brand">MLG</span>
+                  <h4 class="product-card__name">Jersey Local México Blanco</h4>
+                  <p class="product-card__price"><strong>$1,380 MXN</strong></p>
+                  <div class="product-card__rating" aria-label="4 estrellas de 5">
+                    <span aria-hidden="true">★★★★☆</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </li>
+
+          <li class="product-card product-card--small" role="listitem">
+            <article aria-label="Jersey Rosa Mundial Adidas – relacionado">
+              <a href="#" class="product-card__link">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/jerseys/jersey-mexico-rosa-adidas.jpg"
+                    alt="Jersey Rosa de México, edición Mundial Adidas, colores rosa y verde"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    class="product-card__img"
+                  />
+                </figure>
+                <div class="product-card__info">
+                  <span class="product-card__brand">MUNDIAL ADIDAS</span>
+                  <h4 class="product-card__name">Jersey México Rosa</h4>
+                  <p class="product-card__price"><strong>$3,299 MXN</strong></p>
+                  <div class="product-card__rating" aria-label="5 estrellas de 5">
+                    <span aria-hidden="true">★★★★★</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </li>
+
+          <li class="product-card product-card--small" role="listitem">
+            <article aria-label="Jersey Verde MLG – relacionado">
+              <a href="#" class="product-card__link">
+                <figure class="product-card__figure">
+                  <img
+                    src="assets/images/jerseys/jersey-mexico-verde-mlg.jpg"
+                    alt="Jersey Verde de México, MLG, con números bordados en blanco"
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                    class="product-card__img"
+                  />
+                </figure>
+                <div class="product-card__info">
+                  <span class="product-card__brand">MLG</span>
+                  <h4 class="product-card__name">Jersey México Verde</h4>
+                  <p class="product-card__price"><strong>$2,300 MXN</strong></p>
+                  <div class="product-card__rating" aria-label="4 estrellas de 5">
+                    <span aria-hidden="true">★★★★☆</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- Product reviews -->
+      <section
+        id="product-reviews"
+        class="product-reviews"
+        aria-labelledby="reviews-heading"
+      >
+        <h3 id="reviews-heading" class="product-reviews__title">
+          Opiniones de clientes
+        </h3>
+
+        <!-- Review summary -->
+        <div class="reviews-summary" aria-label="Resumen de opiniones">
+          <p class="reviews-summary__average" aria-label="Calificación promedio: 4.8 de 5">
+            <strong>4.8</strong>
+            <span class="rating-stars" aria-hidden="true">★★★★★</span>
+          </p>
+          <p class="reviews-summary__count">Basado en 24 opiniones</p>
+        </div>
+
+        <!-- Individual reviews -->
+        <ul class="reviews-list" role="list" aria-label="Lista de opiniones">
+          <li class="review-item" role="listitem">
+            <article class="review" aria-label="Opinión de cliente: María G.">
+              <header class="review__header">
+                <h4 class="review__author">María G.</h4>
+                <div class="review__rating" aria-label="5 estrellas de 5">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+                <time class="review__date" datetime="2025-05-01">1 de mayo de 2025</time>
+              </header>
+              <p class="review__body">
+                Excelente calidad, la tela es muy suave y los colores son exactamente como en la foto.
+                El envío llegó en dos días. ¡Muy recomendable!
+              </p>
+            </article>
+          </li>
+          <li class="review-item" role="listitem">
+            <article class="review" aria-label="Opinión de cliente: Carlos R.">
+              <header class="review__header">
+                <h4 class="review__author">Carlos R.</h4>
+                <div class="review__rating" aria-label="4 estrellas de 5">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+                <time class="review__date" datetime="2025-04-20">20 de abril de 2025</time>
+              </header>
+              <p class="review__body">
+                Bonito jersey, le falta un poco de tela en las mangas pero en general
+                está muy bien hecho. Lo compré para el partido del Mundial.
+              </p>
+            </article>
+          </li>
+        </ul>
+
+        <button type="button" class="btn btn--ghost btn--wide">
+          Ver todas las opiniones
+        </button>
+      </section>
+
+    </section><!-- /section-product-detail -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5e. JUGUETES / OFERTAS — Product Grid
+         ────────────────────────────────────────────────────────── -->
+    <section
+      id="juguetes"
+      class="section-juguetes"
+      aria-labelledby="juguetes-heading"
+    >
+      <header class="section-header">
+        <h2 id="juguetes-heading" class="section-title">
+          <span aria-hidden="true">🧸</span>
+          Ofertas
+        </h2>
+        <a href="#juguetes" class="section-link" aria-label="Ver todas las ofertas">
+          Ver todas
+        </a>
+      </header>
+
+      <ul class="product-grid" role="list" aria-label="Cuadrícula de ofertas">
+
+        <!-- Tablet Samsung -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Samsung Galaxy Tab S10 FE 10.9 Pulgadas">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/juguetes/samsung-galaxy-tab.jpg"
+                  alt="Tablet Samsung Galaxy Tab S10 FE de 10.9 pulgadas, color azul, con teclado"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+                <span class="product-badge product-badge--offer" aria-label="Oferta especial">
+                  OFERTA
+                </span>
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">SAMSUNG</span>
+                <h3 class="product-card__name">Samsung Galaxy Tab S10 FE 10.9 Pulgadas</h3>
+                <p class="product-card__price"><strong>$2,949 MXN</strong></p>
+                <div class="product-card__rating" aria-label="Calificación: 4 de 5 estrellas">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar Samsung Galaxy Tab en favoritos">♡ Guardar</button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar Samsung Galaxy Tab a mi bolsa"
+                data-product-id="samsung-galaxy-tab-s10-fe">Agregar</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Disney Toy -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Juguete Disney Toy Story Dino Capa de Héroe">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/juguetes/disney-toy-story-dino.jpg"
+                  alt="Juguete Disney Toy Story, dinosaurio Dino con capa de héroe, de plástico, colores azul y rojo"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+                <span class="product-badge product-badge--disney" aria-label="Producto Disney">
+                  DISNEY
+                </span>
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">DISNEY</span>
+                <h3 class="product-card__name">Juguete Toy Story Dino Capa de Héroe</h3>
+                <p class="product-card__price"><strong>$4,249 MXN</strong></p>
+                <div class="product-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar juguete Disney en favoritos">♡ Guardar</button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar juguete Disney a mi bolsa"
+                data-product-id="disney-toy-story-dino-capa">Agregar</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Marvel hoodie -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Sudadera Marvel con capucha – Avengers">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/juguetes/sudadera-marvel-avengers.jpg"
+                  alt="Sudadera Marvel Avengers con capucha, color negro con logo de Los Vengadores en el pecho"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">MARVEL</span>
+                <h3 class="product-card__name">Sudadera Avengers con Capucha</h3>
+                <p class="product-card__price"><strong>$1,599 MXN</strong></p>
+                <div class="product-card__rating" aria-label="Calificación: 4 de 5 estrellas">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar sudadera Marvel en favoritos">♡ Guardar</button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar sudadera Marvel a mi bolsa"
+                data-product-id="sudadera-marvel-avengers">Agregar</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Mattel car -->
+        <li class="product-card" role="listitem">
+          <article aria-label="Auto de Juguete Mattel Amarillo">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/juguetes/auto-mattel.jpg"
+                  alt="Auto de juguete Mattel, color amarillo brillante, escala 1:18, con puertas que se abren"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">MATTEL</span>
+                <h3 class="product-card__name">Auto de Juguete Escala 1:18</h3>
+                <p class="product-card__price"><strong>$1,599 MXN</strong></p>
+                <div class="product-card__rating" aria-label="Calificación: 5 de 5 estrellas">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+              </div>
+            </a>
+            <div class="product-card__actions">
+              <button type="button" class="btn btn--secondary btn--small"
+                aria-label="Guardar auto Mattel en favoritos">♡ Guardar</button>
+              <button type="button" class="btn btn--primary btn--small"
+                aria-label="Agregar auto Mattel a mi bolsa"
+                data-product-id="auto-mattel-amarillo">Agregar</button>
+            </div>
+          </article>
+        </li>
+
+      </ul>
+    </section><!-- /section-juguetes -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5f. PRODUCTOS EN TENDENCIA
+         ────────────────────────────────────────────────────────── -->
+    <section
+      class="section-trending"
+      aria-labelledby="trending-heading"
+    >
+      <header class="section-header">
+        <h2 id="trending-heading" class="section-title">
+          Productos en <em class="highlight">tendencia</em>
+        </h2>
+      </header>
+
+      <ul class="product-grid product-grid--trending" role="list" aria-label="Productos en tendencia">
+
+        <li class="product-card" role="listitem">
+          <article aria-label="Apple iPhone 16 Pro Max en tendencia">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/trending/iphone-16-pro-max.jpg"
+                  alt="Apple iPhone 16 Pro Max, color blanco titanio, vista frontal y trasera"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <h3 class="product-card__name">Apple iPhone 16 Pro Max</h3>
+                <p class="product-card__price"><strong>$28,499 MXN</strong></p>
+                <div class="product-card__rating" aria-label="5 estrellas de 5">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </li>
+
+        <li class="product-card" role="listitem">
+          <article aria-label="4RGOTECH Cargador Inalámbrico en tendencia">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/trending/4rgotech-cargador.jpg"
+                  alt="Cargador inalámbrico 4RGOTECH, negro, con indicador LED, base plana"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">4RGOTECH</span>
+                <h3 class="product-card__name">Cargador Inalámbrico Qi</h3>
+                <p class="product-card__price"><strong>$799 MXN</strong></p>
+                <div class="product-card__rating" aria-label="4 estrellas de 5">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </li>
+
+        <li class="product-card" role="listitem">
+          <article aria-label="Audífonos EXL True Wireless en tendencia">
+            <a href="#" class="product-card__link">
+              <figure class="product-card__figure">
+                <img
+                  src="assets/images/trending/exl-audifonos.jpg"
+                  alt="Audífonos inalámbricos EXL True Wireless, color negro, con cancelación de ruido"
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  class="product-card__img"
+                />
+              </figure>
+              <div class="product-card__info">
+                <span class="product-card__brand">EXL</span>
+                <h3 class="product-card__name">Audífonos True Wireless</h3>
+                <p class="product-card__price"><strong>$1,699 MXN</strong></p>
+                <div class="product-card__rating" aria-label="4 estrellas de 5">
+                  <span aria-hidden="true">★★★★☆</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </li>
+
+      </ul>
+    </section><!-- /section-trending -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5g. IDEAS PARA REGALAR
+         ────────────────────────────────────────────────────────── -->
+    <section
+      class="section-gifting"
+      aria-labelledby="gifting-heading"
+    >
+      <header class="section-header section-header--dark-bg">
+        <h2 id="gifting-heading" class="section-title">
+          Ideas para regalar
+        </h2>
+      </header>
+
+      <ul class="gifting-grid" role="list" aria-label="Categorías de regalos">
+
+        <li role="listitem">
+          <article class="gifting-card" aria-label="Categoría: Sandalias">
+            <a href="#" class="gifting-card__link">
+              <figure class="gifting-card__figure">
+                <img
+                  src="assets/images/gifting/sandalias.jpg"
+                  alt="Mujer usando sandalias de cuero doradas, pies descalzos en fondo de madera"
+                  width="400"
+                  height="300"
+                  loading="lazy"
+                  class="gifting-card__img"
+                />
+                <figcaption class="gifting-card__caption">
+                  <span class="gifting-card__category">Sandalias</span>
+                  <span class="gifting-card__desc">Desde $999 en diferentes estilos</span>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+        </li>
+
+        <li role="listitem">
+          <article class="gifting-card" aria-label="Categoría: Juguetes">
+            <a href="#" class="gifting-card__link">
+              <figure class="gifting-card__figure">
+                <img
+                  src="assets/images/gifting/juguetes-cocina.jpg"
+                  alt="Niña jugando con un set de cocina de juguete colorido con ollas, sartenes y verduras de plástico"
+                  width="400"
+                  height="300"
+                  loading="lazy"
+                  class="gifting-card__img"
+                />
+                <figcaption class="gifting-card__caption">
+                  <span class="gifting-card__category">Juguetes</span>
+                  <span class="gifting-card__desc">Miles de opciones para los más pequeños</span>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+        </li>
+
+      </ul>
+    </section><!-- /section-gifting -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5h. MI BOLSA — Shopping Bag
+         ────────────────────────────────────────────────────────── -->
+    <section
+      id="shopping-bag"
+      class="section-shopping-bag"
+      aria-labelledby="bag-heading"
+    >
+      <h2 id="bag-heading" class="section-title">Mi Bolsa</h2>
+
+      <div class="shopping-bag__layout">
+
+        <!-- Items list -->
+        <div class="bag-items" aria-label="Artículos en tu bolsa">
+
+          <!-- Status message -->
+          <p
+            class="bag-status"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            Tienes <strong>3 artículos</strong> en tu bolsa.
+          </p>
+
+          <!-- Item 1 -->
+          <article class="bag-item" aria-label="Jersey Local México 26 – artículo en bolsa">
+            <figure class="bag-item__figure">
+              <img
+                src="assets/images/jerseys/jersey-mexico-local-26-jugador.jpg"
+                alt="Jersey Local Selección Nacional de México 26, talla L"
+                width="100"
+                height="100"
+                loading="lazy"
+                class="bag-item__img"
+              />
+            </figure>
+            <div class="bag-item__info">
+              <h3 class="bag-item__name">
+                Jersey Local Selección Nacional de México 26 Versión Jugador
+              </h3>
+              <dl class="bag-item__details">
+                <dt>Talla:</dt><dd>L</dd>
+                <dt>Color:</dt><dd>Verde</dd>
+              </dl>
+              <p class="bag-item__price">
+                <span class="sr-only">Precio:</span>
+                <strong>$2,990 MXN</strong>
+              </p>
+            </div>
+            <div class="bag-item__controls">
+              <div class="quantity-stepper" role="group" aria-label="Cantidad de Jersey México 26">
+                <button
+                  type="button"
+                  class="btn btn--qty"
+                  aria-label="Reducir cantidad de Jersey México 26"
+                  data-action="decrease-qty"
+                  data-item-id="jersey-mexico-local-26-jugador"
+                >−</button>
+                <input
+                  type="number"
+                  class="qty-input"
+                  value="1"
+                  min="1"
+                  max="10"
+                  aria-label="Cantidad de Jersey México 26"
+                />
+                <button
+                  type="button"
+                  class="btn btn--qty"
+                  aria-label="Aumentar cantidad de Jersey México 26"
+                  data-action="increase-qty"
+                  data-item-id="jersey-mexico-local-26-jugador"
+                >+</button>
+              </div>
+              <button
+                type="button"
+                class="btn btn--ghost btn--small bag-item__remove"
+                aria-label="Eliminar Jersey México 26 de mi bolsa"
+                data-action="remove-item"
+                data-item-id="jersey-mexico-local-26-jugador"
+              >
+                🗑 Eliminar
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="bag-item" aria-label="Audífonos EXL True Wireless – artículo en bolsa">
+            <figure class="bag-item__figure">
+              <img
+                src="assets/images/trending/exl-audifonos.jpg"
+                alt="Audífonos EXL True Wireless, color negro"
+                width="100"
+                height="100"
+                loading="lazy"
+                class="bag-item__img"
+              />
+            </figure>
+            <div class="bag-item__info">
+              <h3 class="bag-item__name">Audífonos True Wireless EXL</h3>
+              <dl class="bag-item__details">
+                <dt>Color:</dt><dd>Negro</dd>
+              </dl>
+              <p class="bag-item__price">
+                <strong>$1,699 MXN</strong>
+              </p>
+            </div>
+            <div class="bag-item__controls">
+              <div class="quantity-stepper" role="group" aria-label="Cantidad de Audífonos EXL">
+                <button
+                  type="button"
+                  class="btn btn--qty"
+                  aria-label="Reducir cantidad de Audífonos EXL"
+                  data-action="decrease-qty"
+                  data-item-id="exl-audifonos-true-wireless"
+                >−</button>
+                <input
+                  type="number"
+                  class="qty-input"
+                  value="1"
+                  min="1"
+                  max="10"
+                  aria-label="Cantidad de Audífonos EXL"
+                />
+                <button
+                  type="button"
+                  class="btn btn--qty"
+                  aria-label="Aumentar cantidad de Audífonos EXL"
+                  data-action="increase-qty"
+                  data-item-id="exl-audifonos-true-wireless"
+                >+</button>
+              </div>
+              <button
+                type="button"
+                class="btn btn--ghost btn--small bag-item__remove"
+                aria-label="Eliminar Audífonos EXL de mi bolsa"
+                data-action="remove-item"
+                data-item-id="exl-audifonos-true-wireless"
+              >
+                🗑 Eliminar
+              </button>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="bag-item" aria-label="Auto Mattel escala 1:18 – artículo en bolsa">
+            <figure class="bag-item__figure">
+              <img
+                src="assets/images/juguetes/auto-mattel.jpg"
+                alt="Auto de juguete Mattel amarillo escala 1:18"
+                width="100"
+                height="100"
+                loading="lazy"
+                class="bag-item__img"
+              />
+            </figure>
+            <div class="bag-item__info">
+              <h3 class="bag-item__name">Auto de Juguete Mattel Escala 1:18</h3>
+              <dl class="bag-item__details">
+                <dt>Color:</dt><dd>Amarillo</dd>
+              </dl>
+              <p class="bag-item__price">
+                <strong>$1,599 MXN</strong>
+              </p>
+            </div>
+            <div class="bag-item__controls">
+              <div class="quantity-stepper" role="group" aria-label="Cantidad de Auto Mattel">
+                <button
+                  type="button"
+                  class="btn btn--qty"
+                  aria-label="Reducir cantidad de Auto Mattel"
+                  data-action="decrease-qty"
+                  data-item-id="auto-mattel-amarillo"
+                >−</button>
+                <input
+                  type="number"
+                  class="qty-input"
+                  value="1"
+                  min="1"
+                  max="10"
+                  aria-label="Cantidad de Auto Mattel"
+                />
+                <button
+                  type="button"
+                  class="btn btn--qty"
+                  aria-label="Aumentar cantidad de Auto Mattel"
+                  data-action="increase-qty"
+                  data-item-id="auto-mattel-amarillo"
+                >+</button>
+              </div>
+              <button
+                type="button"
+                class="btn btn--ghost btn--small bag-item__remove"
+                aria-label="Eliminar Auto Mattel de mi bolsa"
+                data-action="remove-item"
+                data-item-id="auto-mattel-amarillo"
+              >
+                🗑 Eliminar
+              </button>
+            </div>
+          </article>
+
+        </div><!-- /bag-items -->
+
+        <!-- Order summary -->
+        <aside class="bag-summary" aria-label="Resumen de tu pedido">
+          <h3 class="bag-summary__title">Resumen del pedido</h3>
+
+          <dl class="bag-summary__details">
+            <div class="bag-summary__row">
+              <dt>Subtotal (3 artículos)</dt>
+              <dd>$6,288 MXN</dd>
+            </div>
+            <div class="bag-summary__row">
+              <dt>Envío</dt>
+              <dd>
+                <span class="price-free">Gratis</span>
+              </dd>
+            </div>
+            <div class="bag-summary__row bag-summary__row--divider">
+              <dt>Descuentos</dt>
+              <dd>−$0 MXN</dd>
+            </div>
+            <div class="bag-summary__row bag-summary__row--total">
+              <dt>Total</dt>
+              <dd aria-live="polite" aria-atomic="true">
+                <strong>$6,288 MXN</strong>
+              </dd>
+            </div>
+          </dl>
+
+          <!-- Coupon code -->
+          <div class="coupon-form">
+            <label for="coupon-input" class="coupon-form__label">
+              Código de descuento
+            </label>
+            <div class="coupon-form__row">
+              <input
+                type="text"
+                id="coupon-input"
+                class="coupon-form__input"
+                placeholder="Ingresa tu código"
+                aria-label="Código de descuento"
+                autocomplete="off"
+              />
+              <button
+                type="button"
+                class="btn btn--secondary btn--small"
+                aria-label="Aplicar código de descuento"
+              >
+                Aplicar
+              </button>
+            </div>
+          </div>
+
+          <!-- MSI info -->
+          <p class="bag-summary__msi">
+            Paga en hasta <strong>18 MSI</strong> con tarjetas participantes.
+            <a href="#" class="link-msi">Ver opciones</a>
+          </p>
+
+          <!-- Checkout CTA -->
+          <button
+            type="button"
+            class="btn btn--primary btn--wide btn--large"
+            aria-label="Proceder al pago de $6,288 MXN"
+          >
+            Proceder al pago
+          </button>
+
+          <a
+            href="#inicio"
+            class="btn btn--ghost btn--wide"
+            aria-label="Continuar comprando"
+          >
+            Continuar comprando
+          </a>
+
+          <!-- Trust badges -->
+          <ul class="trust-badges" role="list" aria-label="Garantías de compra segura">
+            <li class="trust-badge">
+              <span aria-hidden="true">🔒</span>
+              Pago 100% seguro
+            </li>
+            <li class="trust-badge">
+              <span aria-hidden="true">🛡️</span>
+              Compra protegida
+            </li>
+            <li class="trust-badge">
+              <span aria-hidden="true">🔄</span>
+              Devolución fácil
+            </li>
+          </ul>
+        </aside>
+
+      </div><!-- /shopping-bag__layout -->
+    </section><!-- /section-shopping-bag -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5i. MI CUENTA — Dashboard (Rewards + Profile)
+         ────────────────────────────────────────────────────────── -->
+    <section
+      id="mi-cuenta"
+      class="section-account"
+      aria-labelledby="account-heading"
+    >
+      <h2 id="account-heading" class="section-title">Mi Cuenta</h2>
+
+      <div class="account-layout">
+
+        <!-- Account sidebar nav -->
+        <nav
+          class="account-nav"
+          aria-label="Navegación de mi cuenta"
+        >
+          <ul class="account-nav__list" role="list">
+            <li class="account-nav__item account-nav__item--active">
+              <a
+                href="#"
+                class="account-nav__link"
+                aria-current="page"
+              >
+                <span aria-hidden="true">🏠</span>
+                Resumen
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">📦</span>
+                Mis pedidos
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">♡</span>
+                Mis favoritos
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">⭐</span>
+                Recompensas
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">📍</span>
+                Mis direcciones
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">💳</span>
+                Métodos de pago
+              </a>
+            </li>
+            <li class="account-nav__item">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">👤</span>
+                Mi perfil
+              </a>
+            </li>
+            <li class="account-nav__item account-nav__item--danger">
+              <a href="#" class="account-nav__link">
+                <span aria-hidden="true">🚪</span>
+                Cerrar sesión
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Main account content -->
+        <div class="account-content">
+
+          <!-- User profile card -->
+          <article
+            class="profile-card"
+            aria-label="Perfil de usuario: María González"
+          >
+            <figure class="profile-card__avatar">
+              <img
+                src="assets/images/user/avatar-placeholder.jpg"
+                alt="Foto de perfil de María González"
+                width="80"
+                height="80"
+                loading="lazy"
+                class="profile-card__avatar-img"
+              />
+            </figure>
+            <div class="profile-card__info">
+              <h3 class="profile-card__name">María González</h3>
+              <p class="profile-card__email">maria.gonzalez@email.com</p>
+              <p class="profile-card__member-since">
+                Miembro desde <time datetime="2020-03-15">marzo 2020</time>
+              </p>
+            </div>
+            <a
+              href="#"
+              class="btn btn--ghost btn--small"
+              aria-label="Editar perfil de María González"
+            >
+              Editar perfil
+            </a>
+          </article>
+
+          <!-- Rewards / Programa de Recompensas -->
+          <section
+            class="rewards-panel"
+            aria-labelledby="rewards-heading"
+          >
+            <header class="rewards-panel__header">
+              <h3 id="rewards-heading" class="rewards-panel__title">
+                <span aria-hidden="true">⭐</span>
+                Programa de Recompensas
+              </h3>
+              <span class="rewards-panel__tier rewards-panel__tier--gold">
+                Nivel Oro
+              </span>
+            </header>
+
+            <!-- Points display -->
+            <div class="rewards-points" aria-label="Puntos disponibles en Programa de Recompensas">
+              <p class="rewards-points__value" aria-label="3,420 puntos disponibles">
+                <strong>3,420</strong>
+                <span class="rewards-points__label">puntos disponibles</span>
+              </p>
+              <p class="rewards-points__equivalent">
+                Equivalen a <strong>$342 MXN</strong> en descuentos
+              </p>
+            </div>
+
+            <!-- Progress to next tier -->
+            <div class="rewards-progress" aria-label="Progreso al siguiente nivel: Platino">
+              <p class="rewards-progress__label">
+                Te faltan <strong>580 puntos</strong> para alcanzar el nivel
+                <strong>Platino</strong>
+              </p>
+              <div
+                class="rewards-progress__bar"
+                role="progressbar"
+                aria-valuenow="3420"
+                aria-valuemin="0"
+                aria-valuemax="4000"
+                aria-label="Progreso: 3,420 de 4,000 puntos para nivel Platino"
+              >
+                <div
+                  class="rewards-progress__fill"
+                  style="width: 85.5%;"
+                  aria-hidden="true"
+                ></div>
+              </div>
+              <p class="rewards-progress__range" aria-hidden="true">
+                <span>0</span>
+                <span>4,000 puntos</span>
+              </p>
+            </div>
+
+            <!-- Rewards actions -->
+            <div class="rewards-actions">
+              <a
+                href="#"
+                class="btn btn--primary"
+                aria-label="Canjear mis puntos de recompensa"
+              >
+                Canjear puntos
+              </a>
+              <a
+                href="#"
+                class="btn btn--ghost"
+                aria-label="Ver historial de puntos"
+              >
+                Ver historial
+              </a>
+            </div>
+
+            <!-- Recent activity -->
+            <section
+              class="rewards-activity"
+              aria-labelledby="activity-heading"
+            >
+              <h4 id="activity-heading" class="rewards-activity__title">
+                Actividad reciente
+              </h4>
+              <ul class="rewards-activity__list" role="list">
+                <li class="rewards-activity__item" role="listitem">
+                  <div class="activity-item">
+                    <span class="activity-item__icon activity-item__icon--earn" aria-hidden="true">+</span>
+                    <div class="activity-item__info">
+                      <p class="activity-item__desc">Compra de Jersey México 26</p>
+                      <time class="activity-item__date" datetime="2025-05-10">
+                        10 de mayo de 2025
+                      </time>
+                    </div>
+                    <p class="activity-item__points activity-item__points--earn">
+                      +299 pts
+                    </p>
+                  </div>
+                </li>
+                <li class="rewards-activity__item" role="listitem">
+                  <div class="activity-item">
+                    <span class="activity-item__icon activity-item__icon--redeem" aria-hidden="true">−</span>
+                    <div class="activity-item__info">
+                      <p class="activity-item__desc">Canje de descuento en compra</p>
+                      <time class="activity-item__date" datetime="2025-04-05">
+                        5 de abril de 2025
+                      </time>
+                    </div>
+                    <p class="activity-item__points activity-item__points--redeem">
+                      −200 pts
+                    </p>
+                  </div>
+                </li>
+                <li class="rewards-activity__item" role="listitem">
+                  <div class="activity-item">
+                    <span class="activity-item__icon activity-item__icon--earn" aria-hidden="true">+</span>
+                    <div class="activity-item__info">
+                      <p class="activity-item__desc">Bono de bienvenida de nivel Oro</p>
+                      <time class="activity-item__date" datetime="2025-03-01">
+                        1 de marzo de 2025
+                      </time>
+                    </div>
+                    <p class="activity-item__points activity-item__points--earn">
+                      +500 pts
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </section><!-- /rewards-panel -->
+
+          <!-- Recent orders -->
+          <section
+            class="recent-orders"
+            aria-labelledby="orders-heading"
+          >
+            <h3 id="orders-heading" class="recent-orders__title">
+              Pedidos recientes
+            </h3>
+            <table class="orders-table" aria-label="Tabla de pedidos recientes">
+              <thead>
+                <tr>
+                  <th scope="col">No. Pedido</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="No. Pedido">#LIV-2025-089123</td>
+                  <td data-label="Fecha">
+                    <time datetime="2025-05-10">10 may 2025</time>
+                  </td>
+                  <td data-label="Total">$2,990 MXN</td>
+                  <td data-label="Estado">
+                    <span class="order-status order-status--shipped">
+                      En camino
+                    </span>
+                  </td>
+                  <td data-label="Acción">
+                    <a
+                      href="#"
+                      class="btn btn--ghost btn--small"
+                      aria-label="Ver detalle del pedido LIV-2025-089123"
+                    >
+                      Ver
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="No. Pedido">#LIV-2025-074210</td>
+                  <td data-label="Fecha">
+                    <time datetime="2025-04-20">20 abr 2025</time>
+                  </td>
+                  <td data-label="Total">$1,699 MXN</td>
+                  <td data-label="Estado">
+                    <span class="order-status order-status--delivered">
+                      Entregado
+                    </span>
+                  </td>
+                  <td data-label="Acción">
+                    <a
+                      href="#"
+                      class="btn btn--ghost btn--small"
+                      aria-label="Ver detalle del pedido LIV-2025-074210"
+                    >
+                      Ver
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <a
+              href="#"
+              class="btn btn--ghost"
+              aria-label="Ver todos mis pedidos"
+            >
+              Ver todos mis pedidos
+            </a>
+          </section>
+
+        </div><!-- /account-content -->
+      </div><!-- /account-layout -->
+    </section><!-- /section-account -->
+
+
+    <!-- ──────────────────────────────────────────────────────────
+         5j. INICIAR SESIÓN — Modal / Dialog
+         ────────────────────────────────────────────────────────── -->
+    <dialog
+      id="login-dialog"
+      class="login-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="login-dialog-title"
+      hidden
+    >
+      <div class="login-dialog__inner">
+        <!-- Close button -->
+        <button
+          type="button"
+          class="btn btn--close login-dialog__close"
+          aria-label="Cerrar ventana de inicio de sesión"
+          data-action="close-login"
+        >
+          ✕
+        </button>
+
+        <!-- Logo -->
+        <header class="login-dialog__header">
+          <img
+            src="assets/images/liverpool-logo.svg"
+            alt="Liverpool"
+            width="120"
+            height="40"
+            class="login-dialog__logo"
+            loading="lazy"
+          />
+          <h2 id="login-dialog-title" class="login-dialog__title">
+            Iniciar sesión
+          </h2>
+          <p class="login-dialog__subtitle">
+            Recuerda que con una sola cuenta puedes ingresar a todas nuestras tiendas.
+          </p>
+        </header>
+
+        <!-- Login form -->
+        <form
+          class="login-form"
+          action="/iniciar-sesion"
+          method="post"
+          novalidate
+          aria-label="Formulario de inicio de sesión"
+        >
+          <!-- Email field -->
+          <div class="form-field">
+            <label for="login-email" class="form-field__label">
+              Correo electrónico *
+            </label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              class="form-field__input"
+              placeholder="ejemplo@correo.com"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="login-email-error"
+            />
+            <p
+              id="login-email-error"
+              class="form-field__error"
+              role="alert"
+              aria-live="polite"
+              hidden
+            >
+              Por favor ingresa un correo electrónico válido.
+            </p>
+          </div>
+
+          <!-- Password field -->
+          <div class="form-field">
+            <label for="login-password" class="form-field__label">
+              Contraseña *
+            </label>
+            <div class="form-field__password-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="form-field__input"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+                aria-required="true"
+                aria-describedby="login-password-error"
+              />
+              <button
+                type="button"
+                class="btn btn--password-toggle"
+                aria-label="Mostrar contraseña"
+                aria-pressed="false"
+                data-action="toggle-password"
+              >
+                👁
+              </button>
+            </div>
+            <p
+              id="login-password-error"
+              class="form-field__error"
+              role="alert"
+              aria-live="polite"
+              hidden
+            >
+              Por favor ingresa tu contraseña.
+            </p>
+          </div>
+
+          <!-- Forgot password -->
+          <a
+            href="#"
+            class="login-form__forgot"
+            aria-label="Recuperar contraseña olvidada"
+          >
+            ¿Olvidaste tu contraseña?
+          </a>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="btn btn--primary btn--wide btn--large"
+            aria-label="Iniciar sesión en Liverpool"
+          >
+            Iniciar sesión
+          </button>
+
+          <!-- Divider -->
+          <div class="login-form__divider" aria-hidden="true">
+            <span>o</span>
+          </div>
+
+          <!-- Register link -->
+          <p class="login-form__register">
+            ¿No tienes cuenta?
+            <a href="#" class="login-form__register-link">
+              Crea una
+            </a>
+          </p>
+
+          <!-- Social login -->
+          <div class="social-login">
+            <button
+              type="button"
+              class="btn btn--social"
+              aria-label="Continuar con Google"
+            >
+              <img
+                src="assets/icons/google-logo.svg"
+                alt=""
+                aria-hidden="true"
+                width="20"
+                height="20"
+              />
+              Continuar con Google
+            </button>
+          </div>
+        </form>
+
+        <!-- Legal links -->
+        <footer class="login-dialog__footer">
+          <nav aria-label="Términos y privacidad">
+            <ul class="login-legal" role="list">
+              <li>
+                <a href="#" class="login-legal__link">
+                  Términos y condiciones
+                </a>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <a href="#" class="login-legal__link">
+                  Aviso de privacidad 2026
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </footer>
+
+      </div>
+    </dialog><!-- /login-dialog -->
+
+
+  </main><!-- /site-main -->
+
+
+  <!-- ============================================================
+       6. SITE FOOTER
+       ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+
+    <!-- Newsletter signup -->
+    <section
+      class="footer-newsletter"
+      aria-labelledby="newsletter-heading"
+    >
+      <div class="footer-newsletter__inner">
+        <h2 id="newsletter-heading" class="footer-newsletter__title">
+          Suscríbete y recibe ofertas exclusivas
+        </h2>
+        <p class="footer-newsletter__desc">
+          Entérate antes que nadie de nuestras promociones y lanzamientos.
+        </p>
+        <form
+          class="newsletter-form"
+          action="/suscripcion"
+          method="post"
+          aria-label="Formulario de suscripción al boletín"
+        >
+          <div class="newsletter-form__row">
+            <label for="newsletter-email" class="sr-only">
+              Correo electrónico para suscripción
+            </label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="email"
+              class="newsletter-form__input"
+              placeholder="Tu correo electrónico"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-label="Ingresa tu correo electrónico para suscribirte"
+            />
+            <button
+              type="submit"
+              class="btn btn--primary"
+              aria-label="Suscribirse al boletín de Liverpool"
+            >
+              Suscribirme
+            </button>
+          </div>
+          <p class="newsletter-form__consent">
+            Al suscribirte aceptas nuestro
+            <a href="#">aviso de privacidad</a>.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer nav columns -->
+    <div class="footer-nav-wrapper">
+
+      <nav class="footer-nav" aria-labelledby="footer-nav-compras">
+        <h3 id="footer-nav-compras" class="footer-nav__heading">
+          Ayuda con tus compras
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Rastrear mi pedido</a></li>
+          <li><a href="#" class="footer-nav__link">Devoluciones y cambios</a></li>
+          <li><a href="#" class="footer-nav__link">Métodos de pago</a></li>
+          <li><a href="#" class="footer-nav__link">Meses sin intereses</a></li>
+          <li><a href="#" class="footer-nav__link">Información de envíos</a></li>
+          <li><a href="#" class="footer-nav__link">Garantías</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="footer-nav-cuenta">
+        <h3 id="footer-nav-cuenta" class="footer-nav__heading">
+          Beneficios Liverpool
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Mi cuenta</a></li>
+          <li><a href="#" class="footer-nav__link">Tarjeta Liverpool</a></li>
+          <li><a href="#" class="footer-nav__link">Programa de recompensas</a></li>
+          <li><a href="#" class="footer-nav__link">Liverpool Plus</a></li>
+          <li><a href="#" class="footer-nav__link">Ofertas exclusivas</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="footer-nav-empresa">
+        <h3 id="footer-nav-empresa" class="footer-nav__heading">
+          Sobre Liverpool
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Quiénes somos</a></li>
+          <li><a href="#" class="footer-nav__link">Encuentra una tienda</a></li>
+          <li><a href="#" class="footer-nav__link">Trabaja con nosotros</a></li>
+          <li><a href="#" class="footer-nav__link">Proveedores</a></li>
+          <li><a href="#" class="footer-nav__link">Responsabilidad social</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-labelledby="footer-nav-contacto">
+        <h3 id="footer-nav-contacto" class="footer-nav__heading">
+          Contáctanos
+        </h3>
+        <ul class="footer-nav__list" role="list">
+          <li><a href="#" class="footer-nav__link">Centro de ayuda</a></li>
+          <li>
+            <a href="#" class="footer-nav__link" aria-label="Llamar al 800 800 8888">
+              800 800 8888
+            </a>
+          </li>
+          <li><a href="#" class="footer-nav__link">Chat en línea</a></li>
+          <li><a href="#" class="footer-nav__link">WhatsApp</a></li>
+        </ul>
+      </nav>
+
+    </div><!-- /footer-nav-wrapper -->
+
+    <!-- Social media -->
+    <section class="footer-social" aria-labelledby="social-heading">
+      <h3 id="social-heading" class="footer-social__heading">
+        Síguenos
+      </h3>
+      <ul class="social-links" role="list" aria-label="Redes sociales de Liverpool">
+        <li>
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en Facebook (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/facebook.svg"
+              alt="Facebook"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en Instagram (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/instagram.svg"
+              alt="Instagram"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en TikTok (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/tiktok.svg"
+              alt="TikTok"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en X (Twitter) (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/x-twitter.svg"
+              alt="X (Twitter)"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Liverpool en YouTube (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/youtube.svg"
+              alt="YouTube"
+              width="24"
+              height="24"
+              loading="lazy"
+            />
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- App download -->
+    <section class="footer-app" aria-labelledby="app-heading">
+      <h3 id="app-heading" class="footer-app__heading">
+        Descarga nuestra app
+      </h3>
+      <ul class="app-links" role="list" aria-label="Descargar aplicación Liverpool">
+        <li>
+          <a
+            href="#"
+            class="app-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Descargar Liverpool en App Store (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/app-store-badge.svg"
+              alt="Disponible en App Store"
+              width="135"
+              height="40"
+              loading="lazy"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="app-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Descargar Liverpool en Google Play (abre en nueva pestaña)"
+          >
+            <img
+              src="assets/icons/google-play-badge.svg"
+              alt="Disponible en Google Play"
+              width="135"
+              height="40"
+              loading="lazy"
+            />
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer legal -->
+    <div class="footer-legal">
+      <p class="footer-legal__copyright">
+        &copy; <time datetime="2026">2026</time> Liverpool. Todos los derechos reservados.
+      </p>
+      <nav aria-label="Avisos legales">
+        <ul class="footer-legal__links" role="list">
+          <li>
+            <a href="#" class="footer-legal__link">
+              Términos y condiciones
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-legal__link">
+              Aviso de privacidad
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-legal__link">
+              Política de cookies
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-legal__link">
+              Mapa del sitio
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </footer><!-- /site-footer -->
+
+</body>
+</html>
