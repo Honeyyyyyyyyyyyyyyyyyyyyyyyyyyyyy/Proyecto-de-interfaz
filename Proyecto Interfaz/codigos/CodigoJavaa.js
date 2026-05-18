@@ -118,20 +118,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
 
+      // abrir / cerrar menú principal
       nav.hidden = isOpen;
 
       toggleBtn.setAttribute("aria-expanded", String(!isOpen));
 
+      // cambiar icono
       toggleBtn.innerHTML = !isOpen
         ? '<span aria-hidden="true">✕</span>'
         : '<span aria-hidden="true">☰</span>';
+
+      // cuando cierras menú, también cierras submenús
+      if (isOpen) {
+        document.querySelectorAll(".submenu").forEach(menu => menu.hidden = true);
+        document.querySelectorAll(".primary-nav__link--toggle").forEach(btn => {
+          btn.setAttribute("aria-expanded", "false");
+        });
+      }
 
     });
 
   }
 
   // =========================
-  // SUBMENÚS
+  // SUBMENÚS (ACORDEÓN)
   // =========================
   const toggleButtons = document.querySelectorAll(".primary-nav__link--toggle");
 
@@ -144,16 +154,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-
-      document.querySelectorAll(".submenu").forEach((menu) => {
+      // cerrar todos primero
+      document.querySelectorAll(".submenu").forEach(menu => {
         menu.hidden = true;
       });
 
-      document.querySelectorAll(".primary-nav__link--toggle").forEach((b) => {
+      document.querySelectorAll(".primary-nav__link--toggle").forEach(b => {
         b.setAttribute("aria-expanded", "false");
       });
 
-      
+      // si estaba cerrado → abrirlo
       if (!isOpen) {
         submenu.hidden = false;
         btn.setAttribute("aria-expanded", "true");
