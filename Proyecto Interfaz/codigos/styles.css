@@ -1281,29 +1281,6 @@ body.auth-locked {
    LETRAS GRANDES
 ========================= */
 
-.big-text{
-    font-size: 20px;
-}
-
-.big-text h1{
-    font-size: 3rem;
-}
-
-.big-text h2{
-    font-size: 2.5rem;
-}
-
-.big-text h3{
-    font-size: 2rem;
-}
-
-.big-text p,
-.big-text a,
-.big-text button,
-.big-text li,
-.big-text span{
-    font-size: 1.2rem;
-}
 
 /* BOTÓN SETTINGS */
 
