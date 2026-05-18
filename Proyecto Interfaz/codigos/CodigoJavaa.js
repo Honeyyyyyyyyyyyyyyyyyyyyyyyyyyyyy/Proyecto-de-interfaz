@@ -106,31 +106,30 @@ resetBtn.addEventListener('click', () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
-  // MENÚ MOBILE
-  // =========================
   const nav = document.getElementById("primary-nav");
   const toggleBtn = document.querySelector('[data-action="toggle-menu"]');
 
+  // =========================
+  // MENÚ PRINCIPAL
+  // =========================
   if (nav && toggleBtn) {
 
     toggleBtn.addEventListener("click", () => {
 
       const isOpen = toggleBtn.getAttribute("aria-expanded") === "true";
 
-      // abrir / cerrar menú principal
       nav.hidden = isOpen;
-
       toggleBtn.setAttribute("aria-expanded", String(!isOpen));
 
-      // cambiar icono
+      // icono hamburguesa
       toggleBtn.innerHTML = !isOpen
-        ? '<span aria-hidden="true">✕</span>'
+        ? '<span aria-hidden="true">☰</span>'
         : '<span aria-hidden="true">☰</span>';
 
-      // cuando cierras menú, también cierras submenús
+      // si se cierra, cerrar submenús también
       if (isOpen) {
         document.querySelectorAll(".submenu").forEach(menu => menu.hidden = true);
+
         document.querySelectorAll(".primary-nav__link--toggle").forEach(btn => {
           btn.setAttribute("aria-expanded", "false");
         });
@@ -154,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isOpen = btn.getAttribute("aria-expanded") === "true";
 
-      // cerrar todos primero
+      // cerrar todos
       document.querySelectorAll(".submenu").forEach(menu => {
         menu.hidden = true;
       });
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
         b.setAttribute("aria-expanded", "false");
       });
 
-      // si estaba cerrado → abrirlo
+      // abrir el actual
       if (!isOpen) {
         submenu.hidden = false;
         btn.setAttribute("aria-expanded", "true");
